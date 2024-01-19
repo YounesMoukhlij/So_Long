@@ -6,7 +6,7 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:39:48 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/20 00:03:19 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/20 00:22:26 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	fill_out_variables(t_solong *variables)
 // void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*f)(), void *param)
 
 
-void	fill_out_image(t_solong *variable)
+void	fill_out_game(t_solong *variable)
 {
 	int		x;
 	int		y;
@@ -56,9 +56,9 @@ void	fill_out_image(t_solong *variable)
 	while (variable->map.map[x])
 	{
 		y = 0;
-		while (variable->map.map[x][y] != '\n' && variable->map.map[x][y])
+		while (variable->map.map[x][y])
 		{
-			render_images_action(variable, x, y);
+			fill_out_image(variable, x, y);
 			y++;
 		}
 		x++;
@@ -78,10 +78,11 @@ int	main(int ac, char **av)
 	printf("N   PL [%d]\n", variable.map.player.player);
 	printf("N   CL [%d]\n", variable.map.collectible);
 	printf("N   EX [%d]\n", variable.map.exit);
-	// fill_out_image(&variable);
+	// fill_out_game(&variable);
 	variable.mlx = mlx_init();
 	variable.mlx_window = mlx_new_window(variable.mlx, variable.win_length * 50 , variable.win_heigth * 50, "so_long");
-	// mlx_hook()
+	//void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*f)(), void *param)
+
 	mlx_loop(variable.mlx);
 	// variable.mlx = mlx_init();
 	return (0);
