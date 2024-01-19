@@ -6,11 +6,11 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 16:17:40 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/19 00:42:22 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/19 19:33:36 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../so_long.h"
 
 int	ft_strlen_word(char *s, char c)
 {

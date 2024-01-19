@@ -6,11 +6,11 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:43:37 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/19 00:42:39 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/19 19:33:39 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../so_long.h"
 
 char	**read_map_from_file(char *file)
 {

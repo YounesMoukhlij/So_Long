@@ -6,7 +6,7 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/19 01:18:06 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/19 21:10:13 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,33 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
-# endif
+# include "mlx/mlx.h"
 
 
-typedef struct	s_map
+# define BUFFER_SIZE 10
+
+typedef struct s_player
 {
-	int		exit;
-	char	**map;
+	int		x;
+	int		y;
 	int		player;
-	int		collectible;
+}	t_player;
+
+typedef struct s_map
+{
+	int			exit;
+	char		**map;
+	t_player	player;
+	int			collectible;
 }	t_map;
 
-typedef	struct s_solong
+typedef struct s_solong
 {
 	t_map	map;
+	void	*mlx;
+	void	*mlx_window;
+	int		win_heigth;
+	int		win_length;
 }	t_solong;
 
 void	error_msg(void);
@@ -42,14 +52,19 @@ void	*ft_free(char **s);
 int		ft_strlen(char *str);
 char	*ft_strdup(char *s1);
 char	*get_next_line(int fd);
-int		is_valid_walls(char **map);
-char	**ft_split(char *s, char c);
 int		ft_lookfor_newline(char *s);
-int		ft_parse(int ac, char *file);
+char	**ft_split(char *s, char c);
+int		calculate_length(char **map);
+int		calculate_heigth(char **map);
 int		ft_strcmp(char *s1, char *s2);
-int		is_valid_rectangle(char **map);
 char	*ft_strjoin(char *s1, char *s2);
-int		is_valid_collectible(char **map);
 char	**read_map_from_file(char *file);
+int		is_valid_walls(t_solong *variable);
+void	fill_out_image(t_solong *variable);
+int		is_valid_rectangle(t_solong *variable);
+int		is_valid_collectible(t_solong *variable);
+int		position_player(t_solong *variable, char flag);
+void	ft_parse(int ac, char *file, t_solong *variable);
+
 
 #endif
