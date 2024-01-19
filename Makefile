@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+         #
+#    By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 15:55:17 by youmoukh          #+#    #+#              #
-#    Updated: 2024/01/18 18:54:03 by youmoukh         ###   ########.fr        #
+#    Updated: 2024/01/18 23:40:51 by younesmoukh      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,19 +24,19 @@ CFLAGS = -Wall -Wextra -Werror
 HEADER = so_long.h
 NAME = so_long
 
-all : ${NAME} clean
+all : ${NAME}
 
 %.o : %.c ${HEADER}
-	cc ${CFLAGS} -c $< -o $@
+	@cc ${CFLAGS} -c $< -o $@
 
 ${NAME} : ${OBJ}
-	cc ${OBJ} -o $@
+	@cc ${OBJ} -o $@
 
 clean :
-	rm -rf ${OBJ}
+	@rm -rf ${OBJ}
 
 fclean : clean
-	rm -rf ${NAME}
+	@rm -rf ${NAME}
 
 re : all fclean
 

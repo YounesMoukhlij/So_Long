@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong_functions_0.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:46:05 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/18 16:38:16 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/18 21:46:25 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_msg(void)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 

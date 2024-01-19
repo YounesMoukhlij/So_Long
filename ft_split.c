@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 16:17:40 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/18 16:57:00 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/19 00:42:22 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,9 @@ char	**ft_split(char *s, char c)
 			s++;
 		if (*s)
 		{
-			r[i++] = ft_create(s, c);
-			// if (!r[i++])
-			// {
-			// 	ft_free(r);
-			// 	return (NULL);
-			// }
+			r[i] = ft_create(s, c);
+			if (!r[i++])
+				return (ft_free(r), NULL);
 		}
 		while (*s && *s != c)
 			s++;

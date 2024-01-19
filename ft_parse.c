@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:35:47 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/18 18:55:43 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/19 01:18:28 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,19 @@ int	check_extension(char *file)
 
 int	ft_parse(int ac, char *file)
 {
-	char	**map;
-	// char	*tmp_map;
+	t_solong variable;
 
 	if (ac <= 1 || ac >= 3)
 		error_msg();
 	if (check_extension(file) == 0)
 		error_msg();
-	map = read_map_from_file(file);
-	// if (is_rectangle(map) || is_player(map) || is_walls() || is_collectible())
-	if (is_rectangle(map))
+	variable.map.map  = read_map_from_file(file);
+	printf("ft_parse func >>>>>> [%s] √\n\n", variable.map.map[1]);
+	if (is_valid_rectangle(variable.map.map) || is_valid_walls(variable.map.map) || is_valid_collectible(variable.map.map))
 		error_msg();
-	ft_free(map);
+
+	printf("%d\n", (variable.map.player));
+	// printf("%d\n", a.collectible);
+	// ft_free(map);
 	return (1);
 }
