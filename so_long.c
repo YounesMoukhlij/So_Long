@@ -6,7 +6,7 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:39:48 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/20 00:22:26 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/20 00:54:23 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,43 @@ void	show(void)
 // 	return (0);
 // }
 
+void	fill_out_image_to_window(t_solong ***variable, int x, int y, char *img)
+{
+	int		img_w;
+	int		img_h;
+
+	(**v)->img = mlx_xpm_file_to_image((**v)->mlx, img, &img_w, &img_h);
+	if (!(**v)->image)
+		error_msg();
+	mlx_put_image_to_window((**v)->mlx, (**v)->win, (**v)->img, x, y);
+}
+
+void	fill_out_image(char c, int x1, int y1, t_solong **v)
+{
+	if (c == '1')
+		fill_out_image_to_window(&v, x1, y1, "./img/wall.xpm");
+	else if (c == 'C')
+	{
+		fill_out_image_to_window(&v, x1, y1, "./img/floor.xpm");
+		fill_out_image_to_window(&v, x1, y1, "./img/collect.xpm");
+		(*v)->collect++;
+	}
+	else if (c == 'P')
+	{
+		(*v)->y_p = y1;
+		(*v)->x_p = x1;
+		fill_out_image_to_window(&v, x1, y1, "./img/floor.xpm");
+		fill_out_image_to_window(&v, x1, y1, "./img/front.xpm");
+	}
+	else
+		fill_out_image_to_window(&v, x1, y1, "./img/floor.xpm");
+}
+
 void	fill_out_variables(t_solong *variables)
 {
 	variables->win_length = calculate_length((variables)->map.map);
 	variables->win_heigth = calculate_heigth((variables)->map.map);
 }
-// void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*f)(), void *param)
-
 
 void	fill_out_game(t_solong *variable)
 {
@@ -78,10 +108,10 @@ int	main(int ac, char **av)
 	printf("N   PL [%d]\n", variable.map.player.player);
 	printf("N   CL [%d]\n", variable.map.collectible);
 	printf("N   EX [%d]\n", variable.map.exit);
-	// fill_out_game(&variable);
+	fill_out_game(&variable);
 	variable.mlx = mlx_init();
 	variable.mlx_window = mlx_new_window(variable.mlx, variable.win_length * 50 , variable.win_heigth * 50, "so_long");
-	//void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*f)(), void *param)
+	//mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*f)(), void *param)
 
 	mlx_loop(variable.mlx);
 	// variable.mlx = mlx_init();

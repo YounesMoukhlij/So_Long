@@ -6,7 +6,7 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/19 21:10:13 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/20 01:13:37 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,13 @@
 # include "mlx/mlx.h"
 
 
+# define SKEY_D 1
+# define SKEY_L 0
+# define SKEY_R 2
+# define SKEY_U 13
+# define SKEY_ESC 53
 # define BUFFER_SIZE 10
+# define WINDOW_CLOSE 17
 
 typedef struct s_player
 {
