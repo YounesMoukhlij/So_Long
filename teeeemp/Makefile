@@ -6,7 +6,7 @@
 #    By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 18:32:41 by aymoulou          #+#    #+#              #
-#    Updated: 2024/01/19 18:16:24 by younesmoukh      ###   ########.fr        #
+#    Updated: 2024/01/20 22:10:51 by younesmoukh      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ all: $(NAME)
 OBJS	= $(SRCS:.c=.o)
 
 $(NAME) : $(OBJS)
-	@$(CC)  -framework OpenGL -framework AppKit  $^ -o $@
+	@$(CC) -Lmlx -framework OpenGL -framework AppKit  $^ -o $@
 	@echo "\[\033[4;35m                                                            \n\
 	  ▄████████  ▄██████▄          ▄█          ▄██████▄  ███▄▄▄▄      ▄██████▄      \n\
 	 ███    ███ ███    ███        ███         ███    ███ ███▀▀▀██▄   ███    ███     \n\

@@ -6,7 +6,7 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:35:47 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/19 19:33:34 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/20 21:46:37 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,4 @@ void	ft_parse(int ac, char *file, t_solong *variable)
 	if (is_valid_rectangle(variable) || is_valid_walls(variable)
 		|| is_valid_collectible(variable))
 		error_msg();
-	// ft_free(map);
 }

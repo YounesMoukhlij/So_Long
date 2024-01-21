@@ -6,7 +6,7 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:43:37 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/19 19:33:39 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/20 21:46:49 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ char	**read_map_from_file(char *file)
 		error_msg();
 	tmp_str = ft_split(str, '\n');
 	free (str);
-	printf("read_map func >>>>>> [%s] √\n\n", tmp_str[1]);
 	return (tmp_str);
 }
