@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:56:15 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/19 19:30:56 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/24 20:17:33 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

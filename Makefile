@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+         #
+#    By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 15:55:17 by youmoukh          #+#    #+#              #
-#    Updated: 2024/01/20 23:27:43 by younesmoukh      ###   ########.fr        #
+#    Updated: 2024/01/24 19:33:23 by youmoukh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,20 +23,20 @@ SRC	=	so_long.c                   \
 		get_next_line/get_next_line_utils.c   \
 
 OBJ = ${SRC:.c=.o}
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 HEADER = so_long.h
 NAME = so_long
 
-all : ${NAME}  execute clean
+all : ${NAME}   clean 
 
 %.o: %.c ${HEADER}
-	@cc ${CFLAGS} -c $< -o $@
+	@cc ${CFLAGS}  -c $< -o $@
 
 execute :
 	@./so_long maps/1.ber
 
 $(NAME): $(OBJ)
-	 @cc $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
+	 @cc $(OBJ)  -lmlx -framework OpenGL -framework AppKit -o $@
 
 clean :
 	@rm -rf ${OBJ}

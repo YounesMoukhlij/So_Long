@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:35:47 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/20 21:46:37 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/24 20:17:45 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

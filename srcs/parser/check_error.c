@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:29:19 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/19 21:13:26 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/24 20:17:41 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

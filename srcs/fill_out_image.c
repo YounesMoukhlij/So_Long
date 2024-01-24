@@ -3,41 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   fill_out_image.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:56:38 by younesmoukh       #+#    #+#             */
-/*   Updated: 2024/01/20 21:54:44 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/24 20:12:57 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	*render_xpm_to_image(t_solong *var, char *xpm_file)
+void	full_fill_xpm_to_image(t_solong *var)
 {
-	void	*ptr;
-	int		i;
+	int	width;
+	int	length;
 
-	i = 40;
-	printf("%s\n", "younes");
-	// ptr = mlx_xpm_file_to_image(var->mlx, xpm_file, &(var->image_size), &(var->image_size));
-	ptr = mlx_xpm_file_to_image(var->mlx, xpm_file, &(i), &(i));
-	// if (!ptr)
-	// {
-	// 	printf("%s\n", (char *)ptr);
-	// 	write(1, "mlx_xpm_file_to_image function fails!\n", 39);
-	// 	// exit(1);
-	// }
-	return (ptr);
+	var->floor = mlx_xpm_file_to_image(var->mlx, FL, &width, &length);
+	var->player = mlx_xpm_file_to_image(var->mlx, PL, &width, &length);
+	var->wall = mlx_xpm_file_to_image(var->mlx, WL, &width, &length);
+	var->exit_cld = mlx_xpm_file_to_image(var->mlx, exit_closd, &width, &length);
+	var->exit_opened = mlx_xpm_file_to_image(var->mlx, exit_open, &width, &length);
+	var->collec = mlx_xpm_file_to_image(var->mlx, CL, &width, &length);
 }
 
-void	inisialize_and_store_images(t_solong *var)
+void	fill_out_image_to_window(t_solong *var, int i, int j)
 {
-	var->wall = render_xpm_to_image(var->mlx, WL);
-	var->floor = render_xpm_to_image(var->mlx, FL);
-	var->player = render_xpm_to_image(var, PL);
-	var->collec = render_xpm_to_image(var->mlx, CL);
-	if (var->collec == 0)
-		var->exit = render_xpm_to_image(var->mlx, exit_open);
-	else
-		var->exit = render_xpm_to_image(var->mlx, exit_closed);
+	if (var->map.map[i][j] == '0')
+		mlx_put_image_to_window(var->mlx,
+			var->mlx_window, var->floor, j * 50, i * 50);
+	else if (var->map.map[i][j] == '1')
+		mlx_put_image_to_window(var->mlx, var->mlx_window,
+			var->wall, j * 50, i * 50);
+	else if (var->map.map[i][j] == 'P')
+		mlx_put_image_to_window(var->mlx,
+			var->mlx_window, var->player, j * 50, i * 50);
+	else if (var->map.map[i][j] == 'E' && var->map.collectible > 0)
+		mlx_put_image_to_window(var->mlx, var->mlx_window,
+			var->exit_cld, j * 50, i * 50);
+	else if (var->map.map[i][j] == 'E' && var->map.collectible == 0)
+		mlx_put_image_to_window(var->mlx,
+			var->mlx_window, var->exit_opened, j * 50, i * 50);
+	else if (var->map.map[i][j] == 'C')
+		mlx_put_image_to_window(var->mlx, var->mlx_window,
+			var->collec, j * 50, i * 50);
+}
+
+void	fill_out_game(t_solong *variable)
+{
+	int		x;
+	int		y;
+
+	x = 0;
+	while (variable->map.map[x])
+	{
+		y = 0;
+		while (variable->map.map[x][y])
+		{
+			fill_out_image_to_window(variable, x, y);
+			y++;
+		}
+		x++;
+	}
 }

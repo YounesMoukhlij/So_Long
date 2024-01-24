@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_from_file.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 13:43:37 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/20 21:46:49 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/24 20:17:54 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 10:41:52 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/19 19:30:59 by younesmoukh      ###   ########.fr       */
+/*   Created: 2024/01/24 20:17:27 by youmoukh          #+#    #+#             */
+/*   Updated: 2024/01/24 20:17:30 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../so_long.h"
 
