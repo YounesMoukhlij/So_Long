@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:39:48 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/24 20:15:52 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:21:52 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,37 @@ void	fill_out_variables(t_solong *variables)
 	full_fill_xpm_to_image(variables);
 }
 
+int	exit_game(void *program)
+{
+	t_solong *variable;
+	
+	variable = (t_solong *)program;
+	mlx_destroy_window(variable->mlx, variable->mlx_window);
+	atexit(show);
+	exit(0);
+	return (0);
+}
+
+int	ft_animation(t_solong *variable)
+{
+	
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_solong	variable;
 
-	// atexit(show);
+	atexit(show);
 	ft_parse(ac, av[1], &variable);
-	fill_out_variables(&variable);
 	variable.mlx = mlx_init();
-	variable.mlx_window = mlx_new_window(variable.mlx, variable.win_length, variable.win_heigth, "so_long");
-	// fill_out_game(&variable);
-	// mlx_hook(variable.mlx_window, 2, 0, key_hook_function, &variable);
+	fill_out_variables(&variable);
+	variable.mlx_window = mlx_new_window(variable.mlx, variable.win_length, variable.win_heigth, "So-Long");
+	fill_out_game(&variable);
+	mlx_hook(variable.mlx_window, 2, 0, key_hook_function, &variable);
+	mlx_hook(variable.mlx_window, 17, 0, exit_game, &variable);
+	mlx_string_put(variable.mlx, variable.mlx_window, 100, 110, 0xffffff, "Move : ");
+	mlx_loop_hook(variable.mlx, ft_animation, &variable);
 	mlx_loop(variable.mlx);
 	return (0);
 }

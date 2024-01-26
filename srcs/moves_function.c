@@ -6,10 +6,9 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:17:19 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/24 20:18:02 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/26 13:33:45 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../so_long.h"
 
@@ -22,90 +21,110 @@ void	ft_swap(char *a, char *b)
 	*b = tmp;
 }
 
-void	move_up(t_solong *game)
+void	move_to_up(t_solong *variable)
 {
-	if (game->map.map[game->map.player.x - 1][game->map.player.y] == '0')
+	if (variable->map.map[variable->map.player.x - 1][variable->map.player.y] == '0')
 	{
-		ft_swap(&game->map.map[game->map.player.x - 1][game->map.player.y],
-			&game->map.map[game->map.player.x][game->map.player.y]);
-		game->map.player.x--;
-		printf("[%sMOVED UP%s] - [%sCOUNT%s] > %zu\n", RED, END, YELLOW, END,
-			++game->mv_count);
+		ft_swap(&variable->map.map[variable->map.player.x - 1][variable->map.player.y],
+			&variable->map.map[variable->map.player.x][variable->map.player.y]);
+		variable->map.player.x--;
+		write_moves_helper(variable);
 	}
-	else if (game->map.map[game->map.player.x - 1][game->map.player.y] == 'C')
+	else if (variable->map.map[variable->map.player.x - 1][variable->map.player.y] == 'C')
 	{
-		game->map.collectibles--;
-		game->map.map[game->map.player.x][game->map.player.y] = '0';
-		game->map.map[game->map.player.x - 1][game->map.player.y] = 'P';
-		game->map.player.x--;
+		variable->map.collectible--;
+		variable->map.map[variable->map.player.x][variable->map.player.y] = '0';
+		variable->map.map[variable->map.player.x - 1][variable->map.player.y] = 'P';
+		variable->map.player.x--;
+		write_moves_helper(variable);
 	}
-	else if (game->map.map[game->map.player.x - 1][game->map.player.y] == 'E'
-		&& !game->map.collectibles)
-		ft_free(game, "BRAVO!");
+	else if (variable->map.map[variable->map.player.x - 1][variable->map.player.y] == 'E'
+		&& !variable->map.collectible)
+	{
+		ft_free_map(&variable);
+		mlx_destroy_window(variable->mlx, variable->mlx_window);
+		write(1, "Bravo\n", 6);
+		exit(0);
+	}
 }
 
-void	move_down(t_solong *game)
+void	move_to_down(t_solong *variable)
 {
-	if (game->map.map[game->map.player.x + 1][game->map.player.y] == '0')
+	if (variable->map.map[variable->map.player.x + 1][variable->map.player.y] == '0')
 	{
-		ft_swap(&game->map.map[game->map.player.x + 1][game->map.player.y],
-			&game->map.map[game->map.player.x][game->map.player.y]);
-		game->map.player.x++;
-		printf("[%sMOVED DOWN%s] - [%sCOUNT%s] > %zu\n", RED, END, YELLOW, END,
-			++game->mv_count);
+		ft_swap(&variable->map.map[variable->map.player.x + 1][variable->map.player.y],
+			&variable->map.map[variable->map.player.x][variable->map.player.y]);
+		variable->map.player.x++;
+		write_moves_helper(variable);
 	}
-	else if (game->map.map[game->map.player.x + 1][game->map.player.y] == 'C')
+	else if (variable->map.map[variable->map.player.x + 1][variable->map.player.y] == 'C')
 	{
-		game->map.collectibles--;
-		game->map.map[game->map.player.x][game->map.player.y] = '0';
-		game->map.map[game->map.player.x + 1][game->map.player.y] = 'P';
-		game->map.player.x++;
+		variable->map.collectible--;
+		variable->map.map[variable->map.player.x][variable->map.player.y] = '0';
+		variable->map.map[variable->map.player.x + 1][variable->map.player.y] = 'P';
+		variable->map.player.x++;
+		write_moves_helper(variable);
 	}
-	else if (game->map.map[game->map.player.x + 1][game->map.player.y] == 'E'
-		&& !game->map.collectibles)
-		ft_free(game, "BRAVO!");
+	else if (variable->map.map[variable->map.player.x + 1][variable->map.player.y] == 'E'
+		&& !variable->map.collectible)
+	{
+		ft_free_map(&variable);
+		mlx_destroy_window(variable->mlx, variable->mlx_window);
+		write(1, "Bravo\n", 6);
+		exit(0);
+	}
 }
 
-void	move_left(t_solong *game)
+void	move_to_left(t_solong *variable)
 {
-	if (game->map.map[game->map.player.x][game->map.player.y - 1] == '0')
+	if (variable->map.map[variable->map.player.x][variable->map.player.y - 1] == '0')
 	{
-		ft_swap(&game->map.map[game->map.player.x][game->map.player.y - 1],
-			&game->map.map[game->map.player.x][game->map.player.y]);
-		game->map.player.y--;
-		// printf("[%sMOVED LEFT%s] - [%sCOUNT%s] > %zu\n", RED, END, YELLOW, END,
-		// 	++game->mv_count);
+		ft_swap(&variable->map.map[variable->map.player.x][variable->map.player.y - 1],
+			&variable->map.map[variable->map.player.x][variable->map.player.y]);
+		variable->map.player.y--;
+		write_moves_helper(variable);
 	}
-	else if (game->map.map[game->map.player.x][game->map.player.y - 1] == 'C')
+	else if (variable->map.map[variable->map.player.x][variable->map.player.y - 1] == 'C')
 	{
-		game->map.collectible--;
-		game->map.map[game->map.player.x][game->map.player.y] = '0';
-		game->map.map[game->map.player.x][game->map.player.y - 1] = 'P';
-		game->map.player.y--;
+		variable->map.collectible--;
+		variable->map.map[variable->map.player.x][variable->map.player.y] = '0';
+		variable->map.map[variable->map.player.x][variable->map.player.y - 1] = 'P';
+		variable->map.player.y--;
+		write_moves_helper(variable);
 	}
-	else if (game->map.map[game->map.player.x][game->map.player.y - 1] == 'E'
-		&& !game->map.collectible)
-		// ft_free(game, "BRAVO!");
+	else if (variable->map.map[variable->map.player.x][variable->map.player.y - 1] == 'E'
+		&& !variable->map.collectible)
+	{
+		ft_free_map(&variable);
+		mlx_destroy_window(variable->mlx, variable->mlx_window);
+		write(1, "Bravo\n", 6);
+		exit(0);
+	}
 }
 
-void	move_right(t_solong *game)
+void	move_to_right(t_solong *variable)
 {
-	if (game->map.map[game->map.player.x][game->map.player.y + 1] == '0')
+	if (variable->map.map[variable->map.player.x][variable->map.player.y + 1] == '0')
 	{
-		ft_swap(&game->map.map[game->map.player.x][game->map.player.y + 1],
-			&game->map.map[game->map.player.x][game->map.player.y]);
-		game->map.player.y++;
-		// printf("[%sMOVED RIGHT%s] - [%sCOUNT%s] > %zu\n", RED, END, YELLOW, END,
-		// 	++game->mv_count);
+		ft_swap(&variable->map.map[variable->map.player.x][variable->map.player.y + 1],
+			&variable->map.map[variable->map.player.x][variable->map.player.y]);
+		variable->map.player.y++;
+		write_moves_helper(variable);
 	}
-	else if (game->map.map[game->map.player.x][game->map.player.y + 1] == 'C')
+	else if (variable->map.map[variable->map.player.x][variable->map.player.y + 1] == 'C')
 	{
-		game->map.collectible--;
-		game->map.map[game->map.player.x][game->map.player.y] = '0';
-		game->map.map[game->map.player.x][game->map.player.y + 1] = 'P';
-		game->map.player.y++;
+		variable->map.collectible--;
+		variable->map.map[variable->map.player.x][variable->map.player.y] = '0';
+		variable->map.map[variable->map.player.x][variable->map.player.y + 1] = 'P';
+		variable->map.player.y++;
+		write_moves_helper(variable);
 	}
-	else if (game->map.map[game->map.player.x][game->map.player.y + 1] == 'E'
-		&& !game->map.collectible)
-		// ft_free(game, "BRAVO!");
+	else if (variable->map.map[variable->map.player.x][variable->map.player.y + 1] == 'E'
+		&& !variable->map.collectible)
+	{
+		ft_free_map(&variable);
+		mlx_destroy_window(variable->mlx, variable->mlx_window);
+		write(1, "Bravo\n", 6);
+		exit(0);
+	}
 }

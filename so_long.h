@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/24 20:13:13 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:24:10 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <mlx.h>
 
-# define SIZE 50
+# define SIZE 35
 # define SKEY_D 1
 # define SKEY_L 0
 # define SKEY_R 2
@@ -42,6 +42,13 @@ typedef struct s_player
 	int		player;
 }	t_player;
 
+typedef struct s_enemy
+{
+	int		x;
+	int		y;
+	int		enemy;
+}	t_enemy;
+
 typedef struct s_map
 {
 	int			exit;
@@ -55,12 +62,14 @@ typedef struct s_solong
 	t_map	map;
 	void	*mlx;
 	void	*wall;
+	t_enemy	enemy;
 	void	*floor;
 	void	*collec;
 	void	*player;
 	void	*exit_cld;
 	int		image_size;
 	void	*mlx_image;
+	int		move_count;
 	int		win_heigth;
 	int		win_length;
 	void	*mlx_window;
@@ -68,10 +77,15 @@ typedef struct s_solong
 }	t_solong;
 
 void	error_msg(void);
+void	ft_putnbr(int nbr);
 void	*ft_free(char **s);
 int		ft_strlen(char *str);
 char	*ft_strdup(char *s1);
 char	*get_next_line(int fd);
+
+
+void	write_moves_helper(t_solong *variable);
+
 int		ft_lookfor_newline(char *s);
 char	**ft_split(char *s, char c);
 int		calculate_length(char **map);
@@ -83,11 +97,18 @@ int		is_valid_walls(t_solong *variable);
 int		is_valid_rectangle(t_solong *variable);
 int		is_valid_collectible(t_solong *variable);
 
-int		key_hook_function(int key, t_solong *variable);
+int		key_hook_function(int key, void *program);
 int		position_player(t_solong *variable, char flag);
 void	ft_parse(int ac, char *file, t_solong *variable);
 
+void	ft_free_map(t_solong **variable);
+
+void	move_to_up(t_solong *game);
+void	move_to_down(t_solong *game);
+void	move_to_right(t_solong *game);
+void	move_to_left(t_solong *game);
 void	fill_out_game(t_solong *variable);
 void	full_fill_xpm_to_image(t_solong *var);
 void	fill_out_image_to_window(t_solong *var, int i, int j);
+void	show(void);
 #endif
