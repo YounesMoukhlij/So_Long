@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/26 16:24:10 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:03:08 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,12 @@ typedef struct s_solong
 	void	*exit_opened;
 }	t_solong;
 
+
+int		check_valid_path(t_solong *var);
+
+
+
+
 void	error_msg(void);
 void	ft_putnbr(int nbr);
 void	*ft_free(char **s);
@@ -85,7 +91,7 @@ char	*get_next_line(int fd);
 
 
 void	write_moves_helper(t_solong *variable);
-
+void	flood_fill(char **map, int x, int y);
 int		ft_lookfor_newline(char *s);
 char	**ft_split(char *s, char c);
 int		calculate_length(char **map);

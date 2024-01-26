@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:17:19 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/26 13:33:45 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:08:00 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,109 +21,109 @@ void	ft_swap(char *a, char *b)
 	*b = tmp;
 }
 
-void	move_to_up(t_solong *variable)
+void	move_to_up(t_solong *var)
 {
-	if (variable->map.map[variable->map.player.x - 1][variable->map.player.y] == '0')
+	if (var->map.map[var->map.player.x - 1][var->map.player.y] == '0')
 	{
-		ft_swap(&variable->map.map[variable->map.player.x - 1][variable->map.player.y],
-			&variable->map.map[variable->map.player.x][variable->map.player.y]);
-		variable->map.player.x--;
-		write_moves_helper(variable);
+		ft_swap(&var->map.map[var->map.player.x - 1][var->map.player.y],
+			&var->map.map[var->map.player.x][var->map.player.y]);
+		var->map.player.x--;
+		write_moves_helper(var);
 	}
-	else if (variable->map.map[variable->map.player.x - 1][variable->map.player.y] == 'C')
+	else if (var->map.map[var->map.player.x - 1][var->map.player.y] == 'C')
 	{
-		variable->map.collectible--;
-		variable->map.map[variable->map.player.x][variable->map.player.y] = '0';
-		variable->map.map[variable->map.player.x - 1][variable->map.player.y] = 'P';
-		variable->map.player.x--;
-		write_moves_helper(variable);
+		var->map.collectible--;
+		var->map.map[var->map.player.x][var->map.player.y] = '0';
+		var->map.map[var->map.player.x - 1][var->map.player.y] = 'P';
+		var->map.player.x--;
+		write_moves_helper(var);
 	}
-	else if (variable->map.map[variable->map.player.x - 1][variable->map.player.y] == 'E'
-		&& !variable->map.collectible)
+	else if (var->map.map[var->map.player.x - 1][var->map.player.y] == 'E'
+		&& !var->map.collectible)
 	{
-		ft_free_map(&variable);
-		mlx_destroy_window(variable->mlx, variable->mlx_window);
+		ft_free_map(&var);
+		mlx_destroy_window(var->mlx, var->mlx_window);
 		write(1, "Bravo\n", 6);
 		exit(0);
 	}
 }
 
-void	move_to_down(t_solong *variable)
+void	move_to_down(t_solong *var)
 {
-	if (variable->map.map[variable->map.player.x + 1][variable->map.player.y] == '0')
+	if (var->map.map[var->map.player.x + 1][var->map.player.y] == '0')
 	{
-		ft_swap(&variable->map.map[variable->map.player.x + 1][variable->map.player.y],
-			&variable->map.map[variable->map.player.x][variable->map.player.y]);
-		variable->map.player.x++;
-		write_moves_helper(variable);
+		ft_swap(&var->map.map[var->map.player.x + 1][var->map.player.y],
+			&var->map.map[var->map.player.x][var->map.player.y]);
+		var->map.player.x++;
+		write_moves_helper(var);
 	}
-	else if (variable->map.map[variable->map.player.x + 1][variable->map.player.y] == 'C')
+	else if (var->map.map[var->map.player.x + 1][var->map.player.y] == 'C')
 	{
-		variable->map.collectible--;
-		variable->map.map[variable->map.player.x][variable->map.player.y] = '0';
-		variable->map.map[variable->map.player.x + 1][variable->map.player.y] = 'P';
-		variable->map.player.x++;
-		write_moves_helper(variable);
+		var->map.collectible--;
+		var->map.map[var->map.player.x][var->map.player.y] = '0';
+		var->map.map[var->map.player.x + 1][var->map.player.y] = 'P';
+		var->map.player.x++;
+		write_moves_helper(var);
 	}
-	else if (variable->map.map[variable->map.player.x + 1][variable->map.player.y] == 'E'
-		&& !variable->map.collectible)
+	else if (var->map.map[var->map.player.x + 1][var->map.player.y] == 'E'
+		&& !var->map.collectible)
 	{
-		ft_free_map(&variable);
-		mlx_destroy_window(variable->mlx, variable->mlx_window);
+		ft_free_map(&var);
+		mlx_destroy_window(var->mlx, var->mlx_window);
 		write(1, "Bravo\n", 6);
 		exit(0);
 	}
 }
 
-void	move_to_left(t_solong *variable)
+void	move_to_left(t_solong *var)
 {
-	if (variable->map.map[variable->map.player.x][variable->map.player.y - 1] == '0')
+	if (var->map.map[var->map.player.x][var->map.player.y - 1] == '0')
 	{
-		ft_swap(&variable->map.map[variable->map.player.x][variable->map.player.y - 1],
-			&variable->map.map[variable->map.player.x][variable->map.player.y]);
-		variable->map.player.y--;
-		write_moves_helper(variable);
+		ft_swap(&var->map.map[var->map.player.x][var->map.player.y - 1],
+			&var->map.map[var->map.player.x][var->map.player.y]);
+		var->map.player.y--;
+		write_moves_helper(var);
 	}
-	else if (variable->map.map[variable->map.player.x][variable->map.player.y - 1] == 'C')
+	else if (var->map.map[var->map.player.x][var->map.player.y - 1] == 'C')
 	{
-		variable->map.collectible--;
-		variable->map.map[variable->map.player.x][variable->map.player.y] = '0';
-		variable->map.map[variable->map.player.x][variable->map.player.y - 1] = 'P';
-		variable->map.player.y--;
-		write_moves_helper(variable);
+		var->map.collectible--;
+		var->map.map[var->map.player.x][var->map.player.y] = '0';
+		var->map.map[var->map.player.x][var->map.player.y - 1] = 'P';
+		var->map.player.y--;
+		write_moves_helper(var);
 	}
-	else if (variable->map.map[variable->map.player.x][variable->map.player.y - 1] == 'E'
-		&& !variable->map.collectible)
+	else if (var->map.map[var->map.player.x][var->map.player.y - 1] == 'E'
+		&& !var->map.collectible)
 	{
-		ft_free_map(&variable);
-		mlx_destroy_window(variable->mlx, variable->mlx_window);
+		ft_free_map(&var);
+		mlx_destroy_window(var->mlx, var->mlx_window);
 		write(1, "Bravo\n", 6);
 		exit(0);
 	}
 }
 
-void	move_to_right(t_solong *variable)
+void	move_to_right(t_solong *var)
 {
-	if (variable->map.map[variable->map.player.x][variable->map.player.y + 1] == '0')
+	if (var->map.map[var->map.player.x][var->map.player.y + 1] == '0')
 	{
-		ft_swap(&variable->map.map[variable->map.player.x][variable->map.player.y + 1],
-			&variable->map.map[variable->map.player.x][variable->map.player.y]);
-		variable->map.player.y++;
-		write_moves_helper(variable);
+		ft_swap(&var->map.map[var->map.player.x][var->map.player.y + 1],
+			&var->map.map[var->map.player.x][var->map.player.y]);
+		var->map.player.y++;
+		write_moves_helper(var);
 	}
-	else if (variable->map.map[variable->map.player.x][variable->map.player.y + 1] == 'C')
+	else if (var->map.map[var->map.player.x][var->map.player.y + 1] == 'C')
 	{
-		variable->map.collectible--;
-		variable->map.map[variable->map.player.x][variable->map.player.y] = '0';
-		variable->map.map[variable->map.player.x][variable->map.player.y + 1] = 'P';
-		variable->map.player.y++;
-		write_moves_helper(variable);
+		var->map.collectible--;
+		var->map.map[var->map.player.x][var->map.player.y] = '0';
+		var->map.map[var->map.player.x][var->map.player.y + 1] = 'P';
+		var->map.player.y++;
+		write_moves_helper(var);
 	}
-	else if (variable->map.map[variable->map.player.x][variable->map.player.y + 1] == 'E'
-		&& !variable->map.collectible)
+	else if (var->map.map[var->map.player.x][var->map.player.y + 1] == 'E'
+		&& !var->map.collectible)
 	{
-		ft_free_map(&variable);
-		mlx_destroy_window(variable->mlx, variable->mlx_window);
+		ft_free_map(&var);
+		mlx_destroy_window(var->mlx, var->mlx_window);
 		write(1, "Bravo\n", 6);
 		exit(0);
 	}

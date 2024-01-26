@@ -6,7 +6,7 @@
 #    By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 15:55:17 by youmoukh          #+#    #+#              #
-#    Updated: 2024/01/26 15:14:42 by youmoukh         ###   ########.fr        #
+#    Updated: 2024/01/26 17:10:35 by youmoukh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRC	=	so_long.c                \
 		srcs/key_controller.c     \
 		srcs/fill_out_image.c         \
 		srcs/parser/ft_parse.c         \
+		srcs/parser/check_valid_path.c        \
 		srcs/parser/ft_split.c          \
 		srcs/moves_function.c            \
 		srcs/parser/check_error.c        \

@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:35:47 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/26 14:45:36 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/26 18:15:47 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ int	check_extension(char *file)
 	return (0);
 }
 
+int	check_valid_members(t_solong *variable)
+{
+	(void) variable;
+	return (0);
+}
+
 void	ft_parse(int ac, char *file, t_solong *variable)
 {
 	if (ac <= 1 || ac >= 3)
@@ -35,6 +41,7 @@ void	ft_parse(int ac, char *file, t_solong *variable)
 		error_msg();
 	variable->map.map = read_map_from_file(file);
 	if (is_valid_rectangle(variable) || is_valid_walls(variable)
-		|| is_valid_collectible(variable))
+		|| is_valid_collectible(variable) || check_valid_path(variable)
+		|| check_valid_members(variable))
 		error_msg();
 }

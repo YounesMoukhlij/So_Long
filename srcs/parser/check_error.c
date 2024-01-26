@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:29:19 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/24 20:17:41 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/26 18:16:51 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ int	is_valid_rectangle(t_solong *variable)
 		j = 0;
 		while (i > j)
 		{
-			if (ft_strlen(variable->map.map[i]) != ft_strlen(variable->map.map[j]))
+			if (ft_strlen(variable->map.map[i])
+				!= ft_strlen(variable->map.map[j]))
 				return (1);
 			j++;
 		}
 		i++;
 	}
-	if (calculate_heigth(variable->map.map) == calculate_length(variable->map.map))
+	if (calculate_heigth(variable->map.map)
+		== calculate_length(variable->map.map))
 		return (1);
 	return (0);
 }
