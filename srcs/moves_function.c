@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_function.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:17:19 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/26 17:08:00 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/28 21:42:14 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	move_to_down(t_solong *var)
 	{
 		ft_free_map(&var);
 		mlx_destroy_window(var->mlx, var->mlx_window);
-		write(1, "Bravo\n", 6);
+		write(1, "YOU WIN\n", 8);
 		exit(0);
 	}
 }
@@ -97,7 +97,7 @@ void	move_to_left(t_solong *var)
 	{
 		ft_free_map(&var);
 		mlx_destroy_window(var->mlx, var->mlx_window);
-		write(1, "Bravo\n", 6);
+		write(1, "YOU WIN\n", 8);
 		exit(0);
 	}
 }
@@ -124,7 +124,7 @@ void	move_to_right(t_solong *var)
 	{
 		ft_free_map(&var);
 		mlx_destroy_window(var->mlx, var->mlx_window);
-		write(1, "Bravo\n", 6);
+		write(1, "YOU WIN\n", 8);
 		exit(0);
 	}
 }

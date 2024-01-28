@@ -36,21 +36,20 @@ void	ft_move_enemy(t_solong *var)
 
 void	ft_animate_enemy(t_solong *var)
 {
-	int	i = 1;
-	int j = 1;
+	int	i;
+	int j;
 	static int	counter;
 
 	i = var->enemy.x;
 	j = var->enemy.y;
-	if (counter++ < var->enemy.frame * 5)
+	if (counter++ < var->enemy.frame * 15)
 		mlx_put_image_to_window(var->mlx, var->mlx_window, var->ennemy_1, j * SIZE, i * SIZE);
-	else if (counter++ < var->enemy.frame * 7)
+	else if (counter++ < var->enemy.frame * 20)
 		mlx_put_image_to_window(var->mlx, var->mlx_window, var->ennemy_2, j * SIZE, i * SIZE);
-	else if (counter++ < var->enemy.frame * 9)
+	else if (counter++ < var->enemy.frame * 25)
 		mlx_put_image_to_window(var->mlx, var->mlx_window, var->ennemy_3, j * SIZE, i * SIZE);
-	else if (counter++ < var->enemy.frame * 11)
+	else if (counter++ < var->enemy.frame * 30)
 	{
-		mlx_put_image_to_window(var->mlx, var->mlx_window, var->ennemy_3, j * SIZE, i * SIZE);
 		ft_move_enemy(var);
 		counter = 0;
 	}
@@ -87,7 +86,6 @@ void	ft_animate_spirites(t_solong *var)
 
 int	ft_animation(t_solong *variable)
 {
-	(void) variable;
 	ft_animate_enemy(variable);
 	ft_animate_spirites(variable);
 	if (variable->enemy.x == variable->map.player.x && variable->enemy.y == variable->map.player.y)

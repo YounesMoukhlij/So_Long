@@ -6,7 +6,7 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:44:51 by younesmoukh       #+#    #+#             */
-/*   Updated: 2024/01/28 00:29:24 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/28 21:55:02 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,14 @@ char	*ft_strjoin_bonus(char *s1, char *s2)
 	r[i] = '\0';
 	free (s2);
 	return (r);
+}
+
+void	ft_destroy(t_solong *variable, int mode)
+{
+	ft_free_map(&variable);
+	mlx_destroy_window(variable->mlx, variable->mlx_window);
+	if (mode == 1)
+		exit(1);
+	else
+		exit(0);
 }

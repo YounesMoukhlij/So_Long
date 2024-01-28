@@ -6,7 +6,7 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/28 19:04:23 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/28 21:55:09 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,10 @@ typedef struct s_solong
 	void		*exit_opened;
 }	t_solong;
 
+
+void	fill_out_variables(t_solong *variables);
+
+void	ft_destroy(t_solong *variable, int mode);
 int		check_valid_path(t_solong **var);
 void	is_free_position_for_enemy(t_solong *variable);
 void	is_free_position_for_spirite(t_solong *variable);

@@ -6,7 +6,7 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 20:56:38 by younesmoukh       #+#    #+#             */
-/*   Updated: 2024/01/28 18:22:48 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/28 21:48:52 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ void	fill_out_game(t_solong *variable)
 	int		y;
 
 	x = 0;
-	mlx_clear_window(variable->mlx, variable->mlx_window);
+
+	full_fill_xpm_to_image(variable);
 	fill_out_floor(variable);
 	while (variable->map.map[x])
 	{

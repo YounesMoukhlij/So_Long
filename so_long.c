@@ -6,7 +6,7 @@
 /*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:39:48 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/28 19:09:05 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/28 21:55:51 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	fill_out_variables(t_solong *variables)
 {
 	variables->move_count = 0;
 	variables->image_size = SIZE;
-	variables->enemy.frame = 10;
+	variables->enemy.frame = 5;
 	full_fill_xpm_to_image(variables);
 	is_free_position_for_enemy(variables);
 	is_free_position_for_spirite(variables);
@@ -36,9 +36,7 @@ int	exit_game(void *program)
 	t_solong *variable;
 
 	variable = (t_solong *)program;
-	ft_free_map(&variable);
-	mlx_destroy_window(variable->mlx, variable->mlx_window);
-	exit(0);
+	ft_destroy(variable, 0);
 	return (0);
 }
 
