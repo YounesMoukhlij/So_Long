@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:39:48 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/26 17:58:58 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:09:05 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,26 @@ void	show(void)
 
 void	fill_out_variables(t_solong *variables)
 {
+	variables->move_count = 0;
 	variables->image_size = SIZE;
+	variables->enemy.frame = 10;
 	full_fill_xpm_to_image(variables);
-	variables->enemy.x = position_player(variables, 'x');
-	variables->enemy.y = position_player(variables, 'y');
+	is_free_position_for_enemy(variables);
+	is_free_position_for_spirite(variables);
 	variables->map.player.x = position_player(variables, 'x');
 	variables->map.player.y = position_player(variables, 'y');
-	variables->win_length = calculate_length((variables)->map.map) * SIZE;
-	variables->win_heigth = calculate_heigth((variables)->map.map) * SIZE;
+	variables->win_length = calculate_length((variables)->map.map);
+	variables->win_heigth = calculate_heigth((variables)->map.map);
 }
-
-// void	ft_move_enemy()
-// {
-
-// }
 
 int	exit_game(void *program)
 {
 	t_solong *variable;
-	
+
 	variable = (t_solong *)program;
 	ft_free_map(&variable);
 	mlx_destroy_window(variable->mlx, variable->mlx_window);
 	exit(0);
-	return (0);
-}
-
-int	ft_animation(t_solong *variable)
-{
-	(void) variable;
 	return (0);
 }
 
@@ -59,12 +50,11 @@ int	main(int ac, char **av)
 	ft_parse(ac, av[1], &variable);
 	variable.mlx = mlx_init();
 	fill_out_variables(&variable);
-	variable.mlx_window = mlx_new_window(variable.mlx, variable.win_length, variable.win_heigth, "So-Long");
+	variable.mlx_window = mlx_new_window(variable.mlx, variable.win_length * SIZE, variable.win_heigth * SIZE, "So-Long");
 	fill_out_game(&variable);
+	mlx_loop_hook(variable.mlx, ft_animation, &variable);
 	mlx_hook(variable.mlx_window, 2, 0, key_hook_function, &variable);
 	mlx_hook(variable.mlx_window, 17, 0, exit_game, &variable);
-	mlx_string_put(variable.mlx, variable.mlx_window, 100, 110, 0xffffff, "Move : ");
-	mlx_loop_hook(variable.mlx, ft_animation, &variable);
 	mlx_loop(variable.mlx);
 	return (0);
 }

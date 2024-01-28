@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong_functions_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 21:02:10 by younesmoukh       #+#    #+#             */
-/*   Updated: 2024/01/26 15:02:26 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:08:47 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,52 @@ int	position_player(t_solong *variable, char flag)
 	return (0);
 }
 
+void	is_free_position_for_enemy(t_solong *variable)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (variable->map.map[i])
+	{
+		j = 0;
+		while (variable->map.map[i][j])
+		{
+			if (variable->map.map[i][j] == '0' && variable->map.map[i][j + 1] == '0' &&
+				variable->map.map[i][j - 1] == '0')
+				{
+					variable->enemy.x = i;
+					variable->enemy.y = j;
+				}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	is_free_position_for_spirite(t_solong *variable)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (variable->map.map[i])
+	{
+		j = 0;
+		while (variable->map.map[i][j])
+		{
+			if (variable->map.map[i][j] == '0' && variable->map.map[i][j + 1] == '0' &&
+				variable->map.map[i][j - 1] == '0')
+				{
+					variable->spirite.x = i;
+					variable->spirite.y = j;
+				}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	ft_free_map(t_solong **variable)
 {
 	int	i;
@@ -47,11 +93,11 @@ void	ft_free_map(t_solong **variable)
 	free((*variable)->map.map);
 }
 
-void	write_moves_helper(t_solong *variable)
+void	write_moves_helper(t_solong *var)
 {
+	var->move_count++;
 	write(1, "Move : ", 7);
-	ft_putnbr(variable->move_count);
-	variable->move_count++;
+	ft_putnbr(var->move_count);
 	write(1, "\n", 1);
 }
 

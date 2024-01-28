@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:35:47 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/26 18:15:47 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/28 18:32:31 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,25 @@ int	check_extension(char *file)
 
 int	check_valid_members(t_solong *variable)
 {
-	(void) variable;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (variable->map.map[i])
+	{
+		j = 0;
+		while (variable->map.map[i][j])
+		{
+			if (!(variable->map.map[i][j] == '0'
+				|| variable->map.map[i][j] == '1'
+				|| variable->map.map[i][j] == 'C'
+				|| variable->map.map[i][j] == 'E'
+				|| variable->map.map[i][j] == 'P'))
+				return (1);
+			j++;
+		}
+		i++;
+	}
 	return (0);
 }
 
@@ -41,7 +59,7 @@ void	ft_parse(int ac, char *file, t_solong *variable)
 		error_msg();
 	variable->map.map = read_map_from_file(file);
 	if (is_valid_rectangle(variable) || is_valid_walls(variable)
-		|| is_valid_collectible(variable) || check_valid_path(variable)
+		|| is_valid_collectible(variable) || check_valid_path(&variable)
 		|| check_valid_members(variable))
 		error_msg();
 }

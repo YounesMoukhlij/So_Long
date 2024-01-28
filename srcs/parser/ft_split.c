@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 16:17:40 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/24 20:17:49 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:06:39 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen_word(char *s, char c)
 	return (len);
 }
 
-void	*ft_free(char **s)
+void	ft_free(char **s)
 {
 	int	i;
 
@@ -33,7 +33,6 @@ void	*ft_free(char **s)
 		i++;
 	}
 	free(s);
-	return (NULL);
 }
 
 int	count_words(char *s, char c)

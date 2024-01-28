@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:55:35 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/26 18:15:28 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/28 18:33:19 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,70 @@
 
 void	flood_fill(char **map, int x, int y)
 {
-	t_solong	variable;
-
-	if (y < 0 || x < 0 || x >= variable.win_heigth || map[x][y] == 'E' || map[x][y] == '1'
-		|| y >= variable.win_length || map[x][y] == 'T')
+	if (y < 0 || x < 0 || x >= 6 || map[x][y] == '1'
+		|| y >= 24 || map[x][y] == 'Y')
 		return ;
-	map[x][y] = 'T';
+	map[x][y] = 'Y';
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
 	flood_fill(map, x, y + 1);
 	flood_fill(map, x, y - 1);
 }
 
-int	check_valid_path(t_solong *var)
+char	**create_map_copy(char	**map, int x, int y)
 {
 	int		i;
 	int		j;
+	char	**map_copy;
 
 	i = 0;
-	flood_fill(var->map.map, 48, 8);
-	while (var->map.map[i])
+	map_copy = malloc(sizeof(char *) * x + 1);
+	if (!map_copy)
+		return (NULL);
+	while (i < x)
 	{
 		j = 0;
-		while (var->map.map[i][j])
+		map_copy[i] = malloc(sizeof(char) * 24 + 1);
+		if (!map_copy[i])
+			return (NULL);
+		while (j < y)
 		{
-			if ((var->map.map[i][j] == 'C' || var->map.map[i][j] == 'E')
-				&& var->map.map[i + 1][j] == 'T' && var->map.map[i - 1][j] == 'T'
-				&& var->map.map[i][j - 1] == 'T'  && var->map.map[i][j + 1] == 'T')
+			map_copy[i][j] = map[i][j];
+			j++;
+		}
+		i++;
+	}
+	map_copy[i] = 0;
+	return (map_copy);
+}
+
+int	now_just_check(char **map_copy)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map_copy[i])
+	{
+		j = 0;
+		while (map_copy[i][j])
+		{
+			if ((map_copy[i][j] == 'C' || map_copy[i][j] == 'E' || map_copy[i][j] == 'P'))
 				return (1);
 			j++;
 		}
 		i++;
 	}
-	i = 0;
-	while (var->map.map[i])
-	{
-		printf("%s\n", var->map.map[i]);
-		i++;
-	}
 	return (0);
+}
+
+int	check_valid_path(t_solong **var)
+{
+	char	**map_copy;
+
+	map_copy = create_map_copy((*var)->map.map, 6 ,24);
+	flood_fill(map_copy, 1, 15);
+	if (now_just_check(map_copy))
+		return (ft_free(map_copy), 1);
+	return (ft_free(map_copy), 0);
 }
