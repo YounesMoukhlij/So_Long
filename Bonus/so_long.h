@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 21:46:04 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/30 00:39:12 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include <stdio.h>
 # include <limits.h>
 # include <stdlib.h>
+#include <math.h>
 # include <unistd.h>
-# include <mlx.h>
+# include "mlx/mlx.h"
 
-# define SIZE 50
+# define SIZE 32
 # define SKEY_D 1
 # define SKEY_L 0
 # define SKEY_R 2
@@ -61,13 +62,6 @@ typedef struct s_enemy
 	int		frame;
 }	t_enemy;
 
-typedef struct s_sprite
-{
-	int		x;
-	int		y;
-	int		frame;
-}	t_spirite;
-
 typedef struct s_map
 {
 	int			exit;
@@ -81,26 +75,14 @@ typedef struct s_solong
 	t_map		map;
 	void		*mlx;
 	void		*wall;
-	void		*arr_en[3];
-	void		*path_en[3];
 	t_enemy		enemy;
 	void		*floor;
 	void		*collec;
-	t_spirite	spirite;
 	void		*player;
 	void		*exit_cld;
 	void		*ennemy_1;
 	void		*ennemy_2;
 	void		*ennemy_3;
-	void		*ennemy_4;
-	void		*spirite_1;
-	void		*spirite_2;
-	void		*spirite_3;
-	void		*spirite_4;
-	void		*spirite_5;
-	void		*spirite_6;
-	void		*spirite_7;
-	void		*spirite_8;
 	int			image_size;
 	void		*mlx_image;
 	int			move_count;

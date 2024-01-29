@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 20:02:17 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/29 22:44:53 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <mlx.h>
+# include "mlx/mlx.h"
 
 # define SIZE 35
 # define SKEY_D 1

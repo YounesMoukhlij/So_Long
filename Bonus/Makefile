@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+         #
+#    By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 15:55:17 by youmoukh          #+#    #+#              #
-#    Updated: 2024/01/29 21:47:53 by youmoukh         ###   ########.fr        #
+#    Updated: 2024/01/29 22:46:10 by younesmoukh      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,13 +34,13 @@ NAME = so_long
 all : ${NAME}   clean play
 
 %.o: %.c ${HEADER}
-	@cc ${CFLAGS}  -c $< -o $@
+	@cc ${CFLAGS} -Imlx -c $< -o $@
 
 play :
 	@./so_long maps/1.ber
 
 $(NAME): $(OBJ)
-	 @cc $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $@
+	 @cc $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
 
 clean :
 	@rm -rf ${OBJ}

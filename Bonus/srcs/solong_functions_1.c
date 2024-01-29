@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong_functions_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:13:57 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 21:47:14 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/30 00:37:28 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,21 @@ void	position_player(t_solong *variable)
 	}
 }
 
-void	position_enemy(t_solong *variable)
+void	position_enemy(t_solong *var)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (variable->map.map[i])
+	while (var->map.map[i])
 	{
 		j = 0;
-		while (variable->map.map[i][j])
+		while (var->map.map[i][j])
 		{
-			if (variable->map.map[i][j] == '0' && variable->map.map[i][j + 1] == '0'
-				&& variable->map.map[i][j - 1] == '0')
+			if (var->map.map[i][j] == '0' && var->map.map[i][j + 1] == '0')
 			{
-				variable->enemy.y = i;
-				variable->enemy.x = j;
+				var->enemy.y = i;
+				var->enemy.x = j;
 			}
 			j++;
 		}

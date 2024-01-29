@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_out_image.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:13:32 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 22:04:51 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/29 23:23:12 by younesmoukh      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	full_fill_xpm_to_image(t_solong *var)
 			&width, &length);
 	var->exit_opened = mlx_xpm_file_to_image(var->mlx, EXIT_OPEN,
 			&width, &length);
-	if (var->wall || var->floor || var->arr_en[2]
-		|| var->arr_en[0] || var->arr_en[1] || var->player
-		|| var->collec || var->exit_cld || var->exit_opened)
+	if (!var->wall || !var->floor || !var->ennemy_1
+		|| !var->ennemy_2 || !var->ennemy_3 || !var->player
+		|| !var->collec || !var->exit_cld || !var->exit_opened)
 		return ;
 }
 
