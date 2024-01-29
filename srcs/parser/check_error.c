@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:29:19 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/26 18:16:51 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:29:24 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	is_valid_rectangle(t_solong *variable)
 		}
 		i++;
 	}
-	if (calculate_heigth(variable->map.map)
-		== calculate_length(variable->map.map))
+	if (variable->win_heigth == variable->win_length)
 		return (1);
 	return (0);
 }
@@ -47,7 +46,8 @@ int	is_valid_walls(t_solong *variable)
 	while (heigth--)
 	{
 		i = ft_strlen(variable->map.map[heigth]) - 1;
-		if (variable->map.map[heigth][0] != '1' || variable->map.map[heigth][i] != '1')
+		if (variable->map.map[heigth][0] != '1'
+			|| variable->map.map[heigth][i] != '1')
 			return (1);
 	}
 	i = 0;
@@ -61,32 +61,31 @@ int	is_valid_walls(t_solong *variable)
 	return (0);
 }
 
-int	is_valid_collectible(t_solong *variable)
+int	is_valid_collectible(t_solong *var)
 {
 	int			i;
 	int			heigth;
 
-	variable->map.exit = 0;
-	variable->map.collectible = 0;
-	variable->map.player.player = 0;
-	heigth = calculate_heigth(variable->map.map);
+	var->map.exit = 0;
+	var->map.collectible = 0;
+	var->map.player.player = 0;
+	heigth = calculate_heigth(var->map.map);
 	while (heigth--)
 	{
 		i = 0;
-		while (variable->map.map[heigth][i])
+		while (var->map.map[heigth][i])
 		{
-			if (variable->map.map[heigth][i] == 'P')
-				variable->map.player.player++;
-			if (variable->map.map[heigth][i] == 'E')
-				variable->map.exit++;
-			if (variable->map.map[heigth][i] == 'C')
-				variable->map.collectible++;
+			if (var->map.map[heigth][i] == 'P')
+				var->map.player.player++;
+			if (var->map.map[heigth][i] == 'E')
+				var->map.exit++;
+			if (var->map.map[heigth][i] == 'C')
+				var->map.collectible++;
 			i++;
 		}
 	}
-	if (variable->map.player.player == 0 || variable->map.exit > 1
-		|| variable->map.exit == 0 || variable->map.collectible == 0
-		|| variable->map.player.player > 1)
+	if (var->map.player.player == 0 || var->map.exit > 1 || var->map.exit == 0
+		|| var->map.collectible == 0 || var->map.player.player > 1)
 		return (1);
 	return (0);
 }

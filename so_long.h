@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/28 21:55:09 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/29 20:02:17 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "mlx/mlx.h"
+# include <mlx.h>
 
 # define SIZE 35
 # define SKEY_D 1
@@ -26,12 +26,9 @@
 # define SKEY_R 2
 # define SKEY_U 13
 # define SKEY_ESC 53
-# define BUFFER_SIZE 10
+# define BUFFER_SIZE 1
 # define WINDOW_CLOSE 17
 # define CL "icons/coin.xpm"
-// # define EN_1 "icons/enemy_1.xpm"
-// # define EN_2 "icons/enemy_2.xpm"
-// # define EN_3 "icons/enemy_3.xpm"
 # define EN_1 "icons/1.xpm"
 # define EN_2 "icons/2.xpm"
 # define EN_3 "icons/3.xpm"
@@ -46,8 +43,8 @@
 # define S7 "icons/spirite/potion_14.xpm"
 # define S8 "icons/spirite/potion_15.xpm"
 # define PL "icons/player.xpm"
-# define exit_open "icons/exit_open.xpm"
-# define exit_closd "icons/exit_closed.xpm"
+# define EXIT_OPEN "icons/exit_open.xpm"
+# define EXIT_CLOSED "icons/exit_closed.xpm"
 
 typedef struct s_player
 {
@@ -112,27 +109,27 @@ typedef struct s_solong
 }	t_solong;
 
 
-void	fill_out_variables(t_solong *variables);
+void	fill_out_variables(t_solong *variable);
 
 void	ft_destroy(t_solong *variable, int mode);
-int		check_valid_path(t_solong **var);
-void	is_free_position_for_enemy(t_solong *variable);
-void	is_free_position_for_spirite(t_solong *variable);
+int		check_valid_path(t_solong *var);
+
 void	ft_swap(char *a, char *b);
-void	ft_move_enemy(t_solong *var);
-char	*ft_strjoin_bonus(char *s1, char *s2);
-void	ft_animate_enemy(t_solong *var);
-void	ft_put_string_to_screen(t_solong *var);
+
+
+
 void	error_msg(void);
+
 void	ft_putnbr(int nbr);
 void	ft_free(char **s);
 int		ft_strlen(char *str);
 char	*ft_strdup(char *s1);
 char	*get_next_line(int fd);
-char	*ft_strjoin_bonus(char *s1, char *s2);
+
 char	*ft_itoa(int nbr);
 void	write_moves_helper(t_solong *variable);
-void	flood_fill(char **map, int x, int y);
+
+
 int		ft_lookfor_newline(char *s);
 char	**ft_split(char *s, char c);
 int		calculate_length(char **map);
@@ -145,7 +142,7 @@ int		is_valid_rectangle(t_solong *variable);
 int		is_valid_collectible(t_solong *variable);
 
 int		key_hook_function(int key, void *program);
-int		position_player(t_solong *variable, char flag);
+void	position_player(t_solong *variable);
 void	ft_parse(int ac, char *file, t_solong *variable);
 
 void	ft_free_map(t_solong **variable);

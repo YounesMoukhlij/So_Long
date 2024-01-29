@@ -3,77 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   solong_functions_1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 21:02:10 by younesmoukh       #+#    #+#             */
-/*   Updated: 2024/01/28 19:08:47 by younesmoukh      ###   ########.fr       */
+/*   Created: 2024/01/29 15:14:18 by youmoukh          #+#    #+#             */
+/*   Updated: 2024/01/29 18:13:27 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	position_player(t_solong *variable, char flag)
+void	position_player(t_solong *variable)
 {
 	int	i;
 	int	j;
 
+	printf("khra\n");
 	i = 0;
 	while (variable->map.map[i])
 	{
 		j = 0;
 		while (variable->map.map[i][j])
 		{
-			if (variable->map.map[i][j] == 'P' && flag == 'y')
-				return (j);
-			else if (variable->map.map[i][j] == 'P' && flag == 'x')
-				return (i);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-void	is_free_position_for_enemy(t_solong *variable)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (variable->map.map[i])
-	{
-		j = 0;
-		while (variable->map.map[i][j])
-		{
-			if (variable->map.map[i][j] == '0' && variable->map.map[i][j + 1] == '0' &&
-				variable->map.map[i][j - 1] == '0')
-				{
-					variable->enemy.x = i;
-					variable->enemy.y = j;
-				}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	is_free_position_for_spirite(t_solong *variable)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (variable->map.map[i])
-	{
-		j = 0;
-		while (variable->map.map[i][j])
-		{
-			if (variable->map.map[i][j] == '0' && variable->map.map[i][j + 1] == '0' &&
-				variable->map.map[i][j - 1] == '0')
-				{
-					variable->spirite.x = i;
-					variable->spirite.y = j;
-				}
+			if (variable->map.map[i][j] == 'P')
+			{
+				variable->map.player.y = i;
+				variable->map.player.x = j;
+			}
 			j++;
 		}
 		i++;

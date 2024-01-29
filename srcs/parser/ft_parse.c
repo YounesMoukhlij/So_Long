@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:35:47 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/28 18:32:31 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/29 20:36:36 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ void	ft_parse(int ac, char *file, t_solong *variable)
 	if (check_extension(file) == 0)
 		error_msg();
 	variable->map.map = read_map_from_file(file);
+	fill_out_variables(variable);
 	if (is_valid_rectangle(variable) || is_valid_walls(variable)
-		|| is_valid_collectible(variable) || check_valid_path(&variable)
+		|| is_valid_collectible(variable) || check_valid_path(variable)
 		|| check_valid_members(variable))
 		error_msg();
 }

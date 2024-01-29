@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_controller.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 01:11:22 by younesmoukh       #+#    #+#             */
-/*   Updated: 2024/01/28 21:55:30 by younesmoukh      ###   ########.fr       */
+/*   Created: 2024/01/29 15:14:11 by youmoukh          #+#    #+#             */
+/*   Updated: 2024/01/29 18:15:50 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	key_hook_function(int key, void *program)
 {
-	t_solong *variable;
+	t_solong	*variable;
 
 	variable = (t_solong *)program;
 	if (key == SKEY_R || key == 124)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_function.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:17:19 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/28 21:42:14 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/29 18:18:11 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,108 +23,100 @@ void	ft_swap(char *a, char *b)
 
 void	move_to_up(t_solong *var)
 {
-	if (var->map.map[var->map.player.x - 1][var->map.player.y] == '0')
+	if (var->map.map[var->map.player.y - 1][var->map.player.x] == '0')
 	{
-		ft_swap(&var->map.map[var->map.player.x - 1][var->map.player.y],
-			&var->map.map[var->map.player.x][var->map.player.y]);
-		var->map.player.x--;
+		ft_swap(&var->map.map[var->map.player.y - 1][var->map.player.x],
+			&var->map.map[var->map.player.y][var->map.player.x]);
+		var->map.player.y--;
 		write_moves_helper(var);
 	}
-	else if (var->map.map[var->map.player.x - 1][var->map.player.y] == 'C')
+	else if (var->map.map[var->map.player.y - 1][var->map.player.x] == 'C')
 	{
 		var->map.collectible--;
-		var->map.map[var->map.player.x][var->map.player.y] = '0';
-		var->map.map[var->map.player.x - 1][var->map.player.y] = 'P';
-		var->map.player.x--;
+		var->map.map[var->map.player.y][var->map.player.x] = '0';
+		var->map.map[var->map.player.y - 1][var->map.player.x] = 'P';
+		var->map.player.y--;
 		write_moves_helper(var);
 	}
-	else if (var->map.map[var->map.player.x - 1][var->map.player.y] == 'E'
+	else if (var->map.map[var->map.player.y - 1][var->map.player.x] == 'E'
 		&& !var->map.collectible)
 	{
-		ft_free_map(&var);
-		mlx_destroy_window(var->mlx, var->mlx_window);
 		write(1, "Bravo\n", 6);
-		exit(0);
+		ft_destroy(var, 0);
 	}
 }
 
 void	move_to_down(t_solong *var)
 {
-	if (var->map.map[var->map.player.x + 1][var->map.player.y] == '0')
+	if (var->map.map[var->map.player.y + 1][var->map.player.x] == '0')
 	{
-		ft_swap(&var->map.map[var->map.player.x + 1][var->map.player.y],
-			&var->map.map[var->map.player.x][var->map.player.y]);
-		var->map.player.x++;
+		ft_swap(&var->map.map[var->map.player.y + 1][var->map.player.x],
+			&var->map.map[var->map.player.y][var->map.player.x]);
+		var->map.player.y++;
 		write_moves_helper(var);
 	}
-	else if (var->map.map[var->map.player.x + 1][var->map.player.y] == 'C')
+	else if (var->map.map[var->map.player.y + 1][var->map.player.x] == 'C')
 	{
 		var->map.collectible--;
-		var->map.map[var->map.player.x][var->map.player.y] = '0';
-		var->map.map[var->map.player.x + 1][var->map.player.y] = 'P';
-		var->map.player.x++;
+		var->map.map[var->map.player.y][var->map.player.x] = '0';
+		var->map.map[var->map.player.y + 1][var->map.player.x] = 'P';
+		var->map.player.y++;
 		write_moves_helper(var);
 	}
-	else if (var->map.map[var->map.player.x + 1][var->map.player.y] == 'E'
+	else if (var->map.map[var->map.player.y + 1][var->map.player.x] == 'E'
 		&& !var->map.collectible)
 	{
-		ft_free_map(&var);
-		mlx_destroy_window(var->mlx, var->mlx_window);
-		write(1, "YOU WIN\n", 8);
-		exit(0);
+		write(1, "Bravo\n", 6);
+		ft_destroy(var, 0);
 	}
 }
 
 void	move_to_left(t_solong *var)
 {
-	if (var->map.map[var->map.player.x][var->map.player.y - 1] == '0')
+	if (var->map.map[var->map.player.y][var->map.player.x - 1] == '0')
 	{
-		ft_swap(&var->map.map[var->map.player.x][var->map.player.y - 1],
-			&var->map.map[var->map.player.x][var->map.player.y]);
-		var->map.player.y--;
+		ft_swap(&var->map.map[var->map.player.y][var->map.player.x - 1],
+			&var->map.map[var->map.player.y][var->map.player.x]);
+		var->map.player.x--;
 		write_moves_helper(var);
 	}
-	else if (var->map.map[var->map.player.x][var->map.player.y - 1] == 'C')
+	else if (var->map.map[var->map.player.y][var->map.player.x - 1] == 'C')
 	{
 		var->map.collectible--;
-		var->map.map[var->map.player.x][var->map.player.y] = '0';
-		var->map.map[var->map.player.x][var->map.player.y - 1] = 'P';
-		var->map.player.y--;
+		var->map.map[var->map.player.y][var->map.player.x] = '0';
+		var->map.map[var->map.player.y][var->map.player.x - 1] = 'P';
+		var->map.player.x--;
 		write_moves_helper(var);
 	}
-	else if (var->map.map[var->map.player.x][var->map.player.y - 1] == 'E'
+	else if (var->map.map[var->map.player.y][var->map.player.x - 1] == 'E'
 		&& !var->map.collectible)
 	{
-		ft_free_map(&var);
-		mlx_destroy_window(var->mlx, var->mlx_window);
-		write(1, "YOU WIN\n", 8);
-		exit(0);
+		write(1, "Bravo\n", 6);
+		ft_destroy(var, 0);
 	}
 }
 
 void	move_to_right(t_solong *var)
 {
-	if (var->map.map[var->map.player.x][var->map.player.y + 1] == '0')
+	if (var->map.map[var->map.player.y][var->map.player.x + 1] == '0')
 	{
-		ft_swap(&var->map.map[var->map.player.x][var->map.player.y + 1],
-			&var->map.map[var->map.player.x][var->map.player.y]);
-		var->map.player.y++;
+		ft_swap(&var->map.map[var->map.player.y][var->map.player.x + 1],
+			&var->map.map[var->map.player.y][var->map.player.x]);
+		var->map.player.x++;
 		write_moves_helper(var);
 	}
-	else if (var->map.map[var->map.player.x][var->map.player.y + 1] == 'C')
+	else if (var->map.map[var->map.player.y][var->map.player.x + 1] == 'C')
 	{
 		var->map.collectible--;
-		var->map.map[var->map.player.x][var->map.player.y] = '0';
-		var->map.map[var->map.player.x][var->map.player.y + 1] = 'P';
-		var->map.player.y++;
+		var->map.map[var->map.player.y][var->map.player.x] = '0';
+		var->map.map[var->map.player.y][var->map.player.x + 1] = 'P';
+		var->map.player.x++;
 		write_moves_helper(var);
 	}
-	else if (var->map.map[var->map.player.x][var->map.player.y + 1] == 'E'
+	else if (var->map.map[var->map.player.y][var->map.player.x + 1] == 'E'
 		&& !var->map.collectible)
 	{
-		ft_free_map(&var);
-		mlx_destroy_window(var->mlx, var->mlx_window);
-		write(1, "YOU WIN\n", 8);
-		exit(0);
+		write(1, "Congrats You Won :)\n", 20);
+		ft_destroy(var, 0);
 	}
 }

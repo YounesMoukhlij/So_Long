@@ -3,42 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   fill_out_image.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 20:56:38 by younesmoukh       #+#    #+#             */
-/*   Updated: 2024/01/28 21:48:52 by younesmoukh      ###   ########.fr       */
+/*   Created: 2024/01/29 15:14:05 by youmoukh          #+#    #+#             */
+/*   Updated: 2024/01/29 16:34:56 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	fill_out_spirites(t_solong *var, int *width, int *length)
-{
-	var->spirite_1 = mlx_xpm_file_to_image(var->mlx, S1, width, length);
-	var->spirite_2 = mlx_xpm_file_to_image(var->mlx, S2, width, length);
-	var->spirite_3 = mlx_xpm_file_to_image(var->mlx, S3, width, length);
-	var->spirite_4 = mlx_xpm_file_to_image(var->mlx, S4, width, length);
-	var->spirite_5 = mlx_xpm_file_to_image(var->mlx, S5, width, length);
-	var->spirite_6 = mlx_xpm_file_to_image(var->mlx, S6, width, length);
-	var->spirite_7 = mlx_xpm_file_to_image(var->mlx, S7, width, length);
-	var->spirite_8 = mlx_xpm_file_to_image(var->mlx, S8, width, length);
-}
 
 void	full_fill_xpm_to_image(t_solong *var)
 {
 	int	width;
 	int	length;
 
-	fill_out_spirites(var, &width, &length);
 	var->wall = mlx_xpm_file_to_image(var->mlx, WL, &width, &length);
 	var->floor = mlx_xpm_file_to_image(var->mlx, FL, &width, &length);
-	var->ennemy_1 = mlx_xpm_file_to_image(var->mlx, EN_1, &width, &length);
-	var->ennemy_2 = mlx_xpm_file_to_image(var->mlx, EN_2, &width, &length);
-	var->ennemy_3 = mlx_xpm_file_to_image(var->mlx, EN_3, &width, &length);
 	var->player = mlx_xpm_file_to_image(var->mlx, PL, &width, &length);
 	var->collec = mlx_xpm_file_to_image(var->mlx, CL, &width, &length);
-	var->exit_cld = mlx_xpm_file_to_image(var->mlx, exit_closd, &width, &length);
-	var->exit_opened = mlx_xpm_file_to_image(var->mlx, exit_open, &width, &length);
+	var->exit_cld = mlx_xpm_file_to_image(var->mlx,
+			EXIT_CLOSED, &width, &length);
+	var->exit_opened = mlx_xpm_file_to_image(var->mlx,
+			EXIT_OPEN, &width, &length);
+	if (!(var->wall || var->collec || var->exit_cld
+		|| var->exit_opened || var->player))
+		return ;
 }
 
 void	fill_out_image_to_window(t_solong *var, int i, int j)
@@ -62,19 +51,20 @@ void	fill_out_image_to_window(t_solong *var, int i, int j)
 		mlx_put_image_to_window(var->mlx, var->mlx_window,
 			var->collec, j * SIZE, i * SIZE);
 }
+
 void	fill_out_floor(t_solong *variable)
 {
 	int	x;
 	int	y;
 
-	x= 0;
+	x = 0;
 	while (variable->map.map[x])
 	{
 		y = 0;
 		while (variable->map.map[x][y])
 		{
 			mlx_put_image_to_window(variable->mlx,
-			variable->mlx_window, variable->floor, y * SIZE, x * SIZE);
+				variable->mlx_window, variable->floor, y * SIZE, x * SIZE);
 			y++;
 		}
 		x++;
