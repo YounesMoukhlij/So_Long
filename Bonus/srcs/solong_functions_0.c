@@ -6,16 +6,32 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:46:05 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/24 20:18:05 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:49:02 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	error_msg(void)
+void	position_exit(t_solong *variable)
 {
-	write(2, "Error\n", 6);
-	exit(1);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (variable->map.map[i])
+	{
+		j = 0;
+		while (variable->map.map[i][j])
+		{
+			if (variable->map.map[i][j] == 'E')
+			{
+				variable->map.exit_y = i;
+				variable->map.exit_x = j;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 int	ft_strcmp(char *s1, char *s2)

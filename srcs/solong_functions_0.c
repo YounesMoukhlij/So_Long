@@ -6,17 +6,11 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:46:05 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/24 20:18:05 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:42:14 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	error_msg(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
 
 int	ft_strcmp(char *s1, char *s2)
 {

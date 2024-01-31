@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:39:48 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/30 00:37:14 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/31 19:58:19 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	fill_out_variables(t_solong *variables)
 	variables->enemy.frame = 5;
 	position_player(variables);
 	position_enemy(variables);
+	position_exit(variables);
 	variables->image_size = SIZE;
 	full_fill_xpm_to_image(variables);
 	variables->win_length = calculate_length((variables)->map.map);
@@ -37,11 +38,14 @@ int	exit_game(void *program)
 	ft_destroy(variable, 0);
 	return (0);
 }
+
 int	main(int ac, char **av)
 {
 	t_solong	variable;
 
-	// atexit(show);
+	atexit(show);
+	(void) ac;
+	(void) av;
 	variable.mlx = mlx_init();
 	ft_parse(ac, av[1], &variable);
 	variable.mlx_window = mlx_new_window(variable.mlx,

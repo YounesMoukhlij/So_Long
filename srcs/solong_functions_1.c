@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:14:18 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 18:13:27 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:14:16 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	position_player(t_solong *variable)
 	int	i;
 	int	j;
 
-	printf("khra\n");
 	i = 0;
 	while (variable->map.map[i])
 	{
@@ -28,6 +27,28 @@ void	position_player(t_solong *variable)
 			{
 				variable->map.player.y = i;
 				variable->map.player.x = j;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	position_exit(t_solong *variable)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (variable->map.map[i])
+	{
+		j = 0;
+		while (variable->map.map[i][j])
+		{
+			if (variable->map.map[i][j] == 'E')
+			{
+				variable->map.exit_y = i;
+				variable->map.exit_x = j;
 			}
 			j++;
 		}

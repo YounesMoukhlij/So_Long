@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:14:05 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 16:34:56 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:47:17 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	full_fill_xpm_to_image(t_solong *var)
 			EXIT_CLOSED, &width, &length);
 	var->exit_opened = mlx_xpm_file_to_image(var->mlx,
 			EXIT_OPEN, &width, &length);
-	if (!(var->wall || var->collec || var->exit_cld
-		|| var->exit_opened || var->player))
+	if (!var->wall || !var->collec || !var->exit_cld
+			|| !var->exit_opened || !var->player)
 		return ;
 }
 
@@ -77,8 +77,6 @@ void	fill_out_game(t_solong *variable)
 	int		y;
 
 	x = 0;
-
-	full_fill_xpm_to_image(variable);
 	fill_out_floor(variable);
 	while (variable->map.map[x])
 	{

@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:14:11 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 18:15:50 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:23:56 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,5 @@ int	key_hook_function(int key, void *program)
 		move_to_down(variable);
 	else if (key == SKEY_ESC)
 		ft_destroy(variable, 0);
-	if (mlx_clear_window(variable->mlx, variable->mlx_window) == -1)
-		ft_destroy(variable, 1);
-	fill_out_game(variable);
 	return (0);
 }

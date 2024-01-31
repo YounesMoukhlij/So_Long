@@ -3,25 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/30 00:39:12 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/01/31 19:51:28 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <fcntl.h>
+# include <mlx.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include <limits.h>
 # include <stdlib.h>
-#include <math.h>
 # include <unistd.h>
-# include "mlx/mlx.h"
 
-# define SIZE 32
+# define SIZE 50
 # define SKEY_D 1
 # define SKEY_L 0
 # define SKEY_R 2
@@ -29,23 +28,15 @@
 # define SKEY_ESC 53
 # define BUFFER_SIZE 10
 # define WINDOW_CLOSE 17
-# define CL "icons/coin.xpm"
-# define EN_1 "icons/1.xpm"
-# define EN_2 "icons/2.xpm"
-# define EN_3 "icons/3.xpm"
-# define WL "icons/wall.xpm"
-# define FL "icons/floor.xpm"
-# define S1 "icons/spirite/potion_08.xpm"
-# define S2 "icons/spirite/potion_09.xpm"
-# define S3 "icons/spirite/potion_10.xpm"
-# define S4 "icons/spirite/potion_11.xpm"
-# define S5 "icons/spirite/potion_12.xpm"
-# define S6 "icons/spirite/potion_13.xpm"
-# define S7 "icons/spirite/potion_14.xpm"
-# define S8 "icons/spirite/potion_15.xpm"
-# define PL "icons/player.xpm"
-# define EXIT_OPEN "icons/exit_open.xpm"
-# define EXIT_CLOSED "icons/exit_closed.xpm"
+# define CL "textures/coin.xpm"
+# define WL "textures/wall.xpm"
+# define FL "textures/floor.xpm"
+# define E1 "textures/en_1.xpm"
+# define E2 "textures/en_2.xpm"
+# define E3 "textures/en_3.xpm"
+# define PL "textures/player.xpm"
+# define EXIT_OPEN "textures/exit_open.xpm"
+# define EXIT_CLOSED "textures/exit_closed.xpm"
 
 typedef struct s_player
 {
@@ -66,6 +57,8 @@ typedef struct s_map
 {
 	int			exit;
 	char		**map;
+	int			exit_x;
+	int			exit_y;
 	t_player	player;
 	int			collectible;
 }	t_map;
@@ -83,6 +76,9 @@ typedef struct s_solong
 	void		*ennemy_1;
 	void		*ennemy_2;
 	void		*ennemy_3;
+	void		*ennemy_4;
+	void		*ennemy_5;
+	void		*ennemy_6;
 	int			image_size;
 	void		*mlx_image;
 	int			move_count;
@@ -92,26 +88,19 @@ typedef struct s_solong
 	void		*exit_opened;
 }	t_solong;
 
-void	fill_out_variables(t_solong *variables);
+void	fill_out_variables(t_solong *variable);
 void	ft_destroy(t_solong *variable, int mode);
 int		check_valid_path(t_solong *var);
-
-
 void	ft_swap(char *a, char *b);
-void	ft_move_enemy(t_solong *var);
-char	*ft_strjoin_bonus(char *s1, char *s2);
-void	ft_animate_enemy(t_solong *var);
-void	ft_put_string_to_screen(t_solong *var);
-void	error_msg(void);
+void	error_message(t_solong *var, int mode);
 void	ft_putnbr(int nbr);
 void	ft_free(char **s);
 int		ft_strlen(char *str);
 char	*ft_strdup(char *s1);
 char	*get_next_line(int fd);
-char	*ft_strjoin_bonus(char *s1, char *s2);
 char	*ft_itoa(int nbr);
 void	write_moves_helper(t_solong *variable);
-void	flood_fill(t_solong *var, char **map, int x, int y);
+void	ft_move_helper(t_solong *var, int mode);
 int		ft_lookfor_newline(char *s);
 char	**ft_split(char *s, char c);
 int		calculate_length(char **map);
@@ -124,7 +113,11 @@ int		is_valid_rectangle(t_solong *variable);
 int		is_valid_collectible(t_solong *variable);
 int		key_hook_function(int key, void *program);
 void	position_player(t_solong *variable);
-void	ft_parse(int ac, char *file, t_solong *variable);
+void	position_enemy(t_solong *variable);
+void	position_exit(t_solong *variable);
+char	*ft_strjoin_bonus(char *s1, char *s2);
+void	ft_parse(int ac, char *file, t_solong *var);
+void	position_exit(t_solong *variable);
 void	ft_free_map(t_solong **variable);
 int		ft_animation(t_solong *variable);
 void	move_to_up(t_solong *game);
@@ -133,10 +126,5 @@ void	move_to_right(t_solong *game);
 void	move_to_left(t_solong *game);
 void	fill_out_game(t_solong *variable);
 void	full_fill_xpm_to_image(t_solong *var);
-void	fill_out_image_to_window(t_solong *var, int i, int j);
 void	show(void);
-
-
-
-void	position_enemy(t_solong *variable);
 #endif

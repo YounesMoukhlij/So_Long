@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:55:35 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 20:43:35 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/31 21:03:53 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	flood_fill(t_solong *var, char **map, int y, int x)
 {
 	if (x < 0 || y < 0 || x >= var->win_heigth || map[x][y] == '1'
-		|| y >= var->win_length || map[x][y] == 'Y')
+		|| y >= var->win_length || map[x][y] == 'Y' || map[x][y] == 'E')
 		return ;
 	map[x][y] = 'Y';
 	flood_fill(var, map, y + 1, x);
@@ -64,7 +64,6 @@ int	now_just_check(char **map_copy)
 		while (map_copy[i][j])
 		{
 			if ((map_copy[i][j] == 'C'
-				|| map_copy[i][j] == 'E'
 				|| map_copy[i][j] == 'P'))
 				return (1);
 			j++;

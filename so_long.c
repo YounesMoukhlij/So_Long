@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:39:48 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 19:12:30 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:32:25 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,20 @@ void	show(void)
 
 void	fill_out_variables(t_solong *variable)
 {
-	variable->win_length = calculate_length((variable)->map.map);
-	variable->win_heigth = calculate_heigth((variable)->map.map);
-	position_player(variable);
+	position_exit(variable);
 	variable->move_count = 0;
+	position_player(variable);
 	variable->image_size = SIZE;
 	full_fill_xpm_to_image(variable);
-}
-
-int	exit_game(void *program)
-{
-	t_solong	*variable;
-
-	variable = (t_solong *)program;
-	ft_destroy(variable, 0);
-	return (0);
+	variable->win_length = calculate_length((variable)->map.map);
+	variable->win_heigth = calculate_heigth((variable)->map.map);
 }
 
 int	main(int ac, char **av)
 {
 	t_solong	variable;
 
-	// atexit(show);
+	atexit(show);
 	variable.mlx = mlx_init();
 	ft_parse(ac, av[1], &variable);
 	variable.mlx_window = mlx_new_window(variable.mlx,

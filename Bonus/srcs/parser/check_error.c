@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:29:19 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 20:39:30 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:51:07 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,8 @@ int	is_valid_collectible(t_solong *var)
 			i++;
 		}
 	}
-	if (var->map.player.player == 0 || var->map.exit > 1
-		|| var->map.exit == 0 || var->map.collectible == 0
-		|| var->map.player.player > 1)
+	if (var->map.player.player == 0 || var->map.exit > 1 || var->map.exit == 0
+		|| var->map.collectible == 0 || var->map.player.player > 1)
 		return (1);
 	return (0);
 }

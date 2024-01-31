@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:35:47 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 20:36:36 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:16:34 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,24 @@ int	check_valid_members(t_solong *variable)
 	return (0);
 }
 
-void	ft_parse(int ac, char *file, t_solong *variable)
+void	ft_parse(int ac, char *file, t_solong *var)
 {
 	if (ac <= 1 || ac >= 3)
-		error_msg();
+		error_message(var, 6);
 	if (check_extension(file) == 0)
-		error_msg();
-	variable->map.map = read_map_from_file(file);
-	fill_out_variables(variable);
-	if (is_valid_rectangle(variable) || is_valid_walls(variable)
-		|| is_valid_collectible(variable) || check_valid_path(variable)
-		|| check_valid_members(variable))
-		error_msg();
+		error_message(var, 5);
+	var->map.map = read_map_from_file(file);
+	if (!var->map.map)
+		error_message(var, 20);
+	fill_out_variables(var);
+	if (is_valid_rectangle(var))
+		error_message(var, 0);
+	if (is_valid_walls(var))
+		error_message(var, 1);
+	if (is_valid_collectible(var))
+		error_message(var, 2);
+	if (check_valid_path(var))
+		error_message(var, 3);
+	if (check_valid_members(var))
+		error_message(var, 4);
 }

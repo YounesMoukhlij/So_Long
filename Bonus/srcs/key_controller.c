@@ -6,7 +6,7 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:13:40 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/29 12:13:44 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:20:52 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ int	key_hook_function(int key, void *program)
 		move_to_down(variable);
 	else if (key == SKEY_ESC)
 		ft_destroy(variable, 0);
-	fill_out_game(variable);
 	return (0);
 }
