@@ -3,52 +3,88 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+         #
+#    By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 15:55:17 by youmoukh          #+#    #+#              #
-#    Updated: 2024/01/31 20:10:51 by youmoukh         ###   ########.fr        #
+#    Updated: 2024/01/31 22:33:52 by younesmoukh      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC	=	so_long.c             \
-		srcs/fill_out_image.c  \
-		srcs/key_controller.c   \
-		srcs/moves_function.c    \
-		srcs/error_message.c      \
-		srcs/parser/ft_parse.c     \
-		srcs/parser/ft_split.c      \
-		srcs/parser/check_error.c    \
-		srcs/solong_functions_0.c     \
-		srcs/solong_functions_1.c      \
-		srcs/solong_functions_2.c       \
-		srcs/solong_functions_3.c        \
-		get_next_line/get_next_line.c     \
-		srcs/parser/check_valid_path.c     \
-		srcs/parser/read_map_from_file.c    \
-		get_next_line/get_next_line_utils.c  \
+		fill_out_image.c  \
+		key_controller.c   \
+		moves_function.c    \
+		error_message.c      \
+		ft_parse.c     \
+		ft_split.c      \
+		check_error.c    \
+		solong_functions_0.c     \
+		solong_functions_1.c      \
+		solong_functions_2.c       \
+		solong_functions_3.c        \
+		get_next_line.c     \
+		check_valid_path.c     \
+		read_map_from_file.c    \
+		get_next_line_utils.c  \
+
+bonus_folder = bonus/
+
+SRC_B = $(bonus_folder)get_next_line_bonus.c \
+		$(bonus_folder)get_next_line_utils_bonus.c \
+		$(bonus_folder)check_error_bonus.c \
+		$(bonus_folder)animation_bonus.c \
+		$(bonus_folder)ft_parse_bonus.c \
+		$(bonus_folder)so_long_bonus.c \
+		$(bonus_folder)read_map_from_file_bonus.c \
+		$(bonus_folder)ft_split_bonus.c \
+		$(bonus_folder)solong_functions_0_bonus.c \
+		$(bonus_folder)solong_functions_1_bonus.c \
+		$(bonus_folder)solong_functions_2_bonus.c \
+		$(bonus_folder)solong_functions_3_bonus.c \
+		$(bonus_folder)fill_out_image_bonus.c \
+		$(bonus_folder)moves_function_bonus.c \
+		$(bonus_folder)key_controller_bonus.c \
+		$(bonus_folder)error_message_bonus.c \
+		$(bonus_folder)check_valid_path_bonus.c\
 
 OBJ = ${SRC:.c=.o}
+
+OBJ_B = ${SRC_B:.c=.o}
+
 CFLAGS = -Wall -Wextra -Werror
-HEADER = so_long.h
+
+HEADER_M = so_long.h
+
 NAME = so_long
 
-all : ${NAME}   clean execute
+B_NAME = so_long_bonus
 
-%.o: %.c ${HEADER}
+all : ${NAME}
+
+bonus : ${B_NAME}
+
+${B_NAME}: ${OBJ_B}
+			@echo "\033[31m bonus Linked $@\033[0m"
+			@cc ${CFLAGS} ${OBJ_B} -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
+
+%_bonus.o : %_bonus.c $(bonus_folder)so_long_bonus.h
+			@echo "Compiling bonus $<"
+			@cc ${CFLAGS} -Imlx -c $< -o $@
+
+%.o: %.c ${HEADER_M}
+	@echo "Compiling mandatory $<"
 	@cc ${CFLAGS} -Imlx -c $< -o $@
 
-execute :
-	@./so_long maps/map.ber
-
 $(NAME): $(OBJ)
-	 @cc $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $@
+		@echo "\033[32m mandatory Linked $@\033[0m"
+		@cc $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
 
 clean :
-	@rm -rf ${OBJ}
+	@rm -rf ${OBJ} ${OBJ_B}
 
 fclean : clean
-	@rm -rf ${NAME}
+	@rm -rf ${NAME} ${B_NAME}
 
-re : all fclean
+re : fclean all
 
 .PHONY : all re fclean clean
