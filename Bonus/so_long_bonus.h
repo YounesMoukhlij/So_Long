@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:30:59 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 17:16:00 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
-// # include <mlx.h>
-# include "mlx/mlx.h"
-# include <stdio.h>
+# include <mlx.h>
 # include <fcntl.h>
 # include <limits.h>
 # include <stdlib.h>
@@ -77,9 +75,6 @@ typedef struct s_solong
 	void		*ennemy_1;
 	void		*ennemy_2;
 	void		*ennemy_3;
-	void		*ennemy_4;
-	void		*ennemy_5;
-	void		*ennemy_6;
 	int			image_size;
 	void		*mlx_image;
 	int			move_count;
@@ -123,9 +118,9 @@ void	ft_free_map(t_solong **variable);
 int		ft_animation(t_solong *variable);
 void	move_to_up(t_solong *game);
 void	move_to_down(t_solong *game);
+int		check_valid_path_door(t_solong *var);
 void	move_to_right(t_solong *game);
 void	move_to_left(t_solong *game);
 void	fill_out_game(t_solong *variable);
 void	full_fill_xpm_to_image(t_solong *var);
-void	show(void);
 #endif

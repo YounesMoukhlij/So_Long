@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:37:09 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:29:31 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 17:16:20 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <mlx.h>
 # include <fcntl.h>
-# include <stdio.h>
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-// # include <mlx.h>
-# include "mlx/mlx.h"
 
 # define SIZE 50
 # define SKEY_D 1
@@ -30,9 +28,6 @@
 # define BUFFER_SIZE 1
 # define WINDOW_CLOSE 17
 # define CL "textures/coin.xpm"
-# define EN_1 "textures/1.xpm"
-# define EN_2 "textures/2.xpm"
-# define EN_3 "textures/3.xpm"
 # define WL "textures/wall.xpm"
 # define FL "textures/floor.xpm"
 # define PL "textures/player.xpm"
@@ -110,5 +105,5 @@ void	move_to_right(t_solong *game);
 void	move_to_left(t_solong *game);
 void	fill_out_game(t_solong *variable);
 void	full_fill_xpm_to_image(t_solong *var);
-void	show(void);
+int		check_valid_path_door(t_solong *var);
 #endif

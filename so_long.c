@@ -6,16 +6,11 @@
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:39:48 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 19:32:25 by youmoukh         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:44:35 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	show(void)
-{
-	system("leaks so_long");
-}
 
 void	fill_out_variables(t_solong *variable)
 {
@@ -32,7 +27,6 @@ int	main(int ac, char **av)
 {
 	t_solong	variable;
 
-	atexit(show);
 	variable.mlx = mlx_init();
 	ft_parse(ac, av[1], &variable);
 	variable.mlx_window = mlx_new_window(variable.mlx,

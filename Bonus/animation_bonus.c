@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:04:27 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:29:57 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 17:15:15 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void	ft_animate_enemy(t_solong *var)
 int	ft_animation(t_solong *variable)
 {
 	ft_animate_enemy(variable);
-	if (variable->enemy.x == variable->map.player.x && variable->enemy.y == variable->map.player.y)
+	if (variable->enemy.x == variable->map.player.x
+		&& variable->enemy.y == variable->map.player.y)
 	{
 		write(1, "YOU LOSE (< . . . >)\nHe's a Baster for sure !\n", 47);
 		ft_destroy(variable, 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong_functions_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:14:26 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:21:23 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 17:09:21 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

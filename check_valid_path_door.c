@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_path.c                                 :+:      :+:    :+:   */
+/*   check_valid_path_door.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 14:55:35 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/02/01 17:10:35 by youmoukh         ###   ########.fr       */
+/*   Created: 2024/02/01 15:52:13 by youmoukh          #+#    #+#             */
+/*   Updated: 2024/02/01 16:30:43 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	flood_fill(t_solong *var, char **map, int y, int x)
+void	flood_fill_1(t_solong *var, char **map, int y, int x)
 {
-	if (x < 0 || y < 0 || x >= var->win_heigth || map[x][y] == '1'
-		|| y >= var->win_length || map[x][y] == 'Y')
+	if (x < 0 || y < 0 || x >= var->win_heigth || map[x][y] == 'E'
+		|| y >= var->win_length || map[x][y] == 'Y' || map[x][y] == '1')
 		return ;
 	map[x][y] = 'Y';
-	flood_fill(var, map, y + 1, x);
-	flood_fill(var, map, y - 1, x);
-	flood_fill(var, map, y, x + 1);
-	flood_fill(var, map, y, x - 1);
+	flood_fill_1(var, map, y + 1, x);
+	flood_fill_1(var, map, y - 1, x);
+	flood_fill_1(var, map, y, x + 1);
+	flood_fill_1(var, map, y, x - 1);
 }
 
-char	**create_map_copy(char	**map, int x, int y)
+char	**create_map_copy_1(char **map, int x, int y)
 {
 	int		i;
 	int		j;
@@ -52,7 +52,7 @@ char	**create_map_copy(char	**map, int x, int y)
 	return (map_copy);
 }
 
-int	now_just_check(char **map_copy)
+int	now_just_check_1(char **map_copy)
 {
 	int	i;
 	int	j;
@@ -64,7 +64,6 @@ int	now_just_check(char **map_copy)
 		while (map_copy[i][j])
 		{
 			if ((map_copy[i][j] == 'C'
-				|| map_copy[i][j] == 'E'
 				|| map_copy[i][j] == 'P'))
 				return (1);
 			j++;
@@ -74,13 +73,14 @@ int	now_just_check(char **map_copy)
 	return (0);
 }
 
-int	check_valid_path(t_solong *var)
+int	check_valid_path_door(t_solong *var)
 {
 	char	**map_copy;
 
-	map_copy = create_map_copy(var->map.map, var->win_length, var->win_heigth);
-	flood_fill(var, map_copy, var->map.player.x, var->map.player.y);
-	if (now_just_check(map_copy))
+	map_copy = create_map_copy_1(var->map.map,
+			var->win_length, var->win_heigth);
+	flood_fill_1(var, map_copy, var->map.player.x, var->map.player.y);
+	if (now_just_check_1(map_copy))
 		return (ft_free(map_copy), 1);
 	return (ft_free(map_copy), 0);
 }

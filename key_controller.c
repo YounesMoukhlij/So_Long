@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_controller.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:14:11 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:21:02 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 17:01:58 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

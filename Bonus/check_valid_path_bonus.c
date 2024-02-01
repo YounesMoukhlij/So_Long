@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_path.c                                 :+:      :+:    :+:   */
+/*   check_valid_path_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:55:35 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 21:53:18 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 16:39:01 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	flood_fill(t_solong *var, char **map, int y, int x)
 {
 	if (x < 0 || y < 0 || x >= var->win_heigth || map[x][y] == '1'
-		|| y >= var->win_length || map[x][y] == 'Y' || map[x][y] == 'E')
+		|| y >= var->win_length || map[x][y] == 'Y')
 		return ;
 	map[x][y] = 'Y';
 	flood_fill(var, map, y + 1, x);
@@ -64,6 +64,7 @@ int	now_just_check(char **map_copy)
 		while (map_copy[i][j])
 		{
 			if ((map_copy[i][j] == 'C'
+				|| map_copy[i][j] == 'E'
 				|| map_copy[i][j] == 'P'))
 				return (1);
 			j++;

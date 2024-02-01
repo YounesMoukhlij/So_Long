@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_from_file.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:14:52 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:29:26 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 17:16:29 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,28 @@ void	ft_check(char *str, int mode)
 	}
 }
 
+void	check_before(char *file)
+{
+	int		fd;
+	char	*s;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+	{
+		write(1, "Error\nfile cannot be opened.", 28);
+		exit (1);
+	}
+	s = get_next_line(fd);
+	close (fd);
+	if (s == NULL)
+	{
+		free (s);
+		write(1, "Error\nMap not Valid.", 20);
+		exit (1);
+	}
+	free (s);
+}
+
 char	**read_map_from_file(char *file)
 {
 	int		fd;
@@ -47,6 +69,7 @@ char	**read_map_from_file(char *file)
 	char	*r_f_g;
 	char	**tmp_str;
 
+	check_before(file);
 	str = ft_strdup("");
 	fd = open(file, O_RDONLY);
 	while (1)

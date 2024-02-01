@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:35:47 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:20:56 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 16:44:05 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
 int	check_extension(char *file)
 {
@@ -61,14 +62,16 @@ void	ft_parse(int ac, char *file, t_solong *var)
 	if (!var->map.map)
 		error_message(var, 20);
 	fill_out_variables(var);
+	if (check_valid_members(var))
+		error_message(var, 4);
 	if (is_valid_rectangle(var))
 		error_message(var, 0);
 	if (is_valid_walls(var))
 		error_message(var, 1);
 	if (is_valid_collectible(var))
 		error_message(var, 2);
+	if (check_valid_path_door(var))
+		error_message(var, 3);
 	if (check_valid_path(var))
 		error_message(var, 3);
-	if (check_valid_members(var))
-		error_message(var, 4);
 }

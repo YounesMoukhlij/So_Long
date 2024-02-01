@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+         #
+#    By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/17 15:55:17 by youmoukh          #+#    #+#              #
-#    Updated: 2024/01/31 22:33:52 by younesmoukh      ###   ########.fr        #
+#    Updated: 2024/02/01 16:31:59 by youmoukh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC	=	so_long.c             \
+SRC	=	so_long.c           \
 		fill_out_image.c  \
 		key_controller.c   \
 		moves_function.c    \
@@ -18,6 +18,7 @@ SRC	=	so_long.c             \
 		ft_parse.c     \
 		ft_split.c      \
 		check_error.c    \
+		check_valid_path_door.c    \
 		solong_functions_0.c     \
 		solong_functions_1.c      \
 		solong_functions_2.c       \
@@ -31,6 +32,7 @@ bonus_folder = bonus/
 
 SRC_B = $(bonus_folder)get_next_line_bonus.c \
 		$(bonus_folder)get_next_line_utils_bonus.c \
+		$(bonus_folder)check_valid_path_door_bonus.c    \
 		$(bonus_folder)check_error_bonus.c \
 		$(bonus_folder)animation_bonus.c \
 		$(bonus_folder)ft_parse_bonus.c \
@@ -65,7 +67,7 @@ bonus : ${B_NAME}
 
 ${B_NAME}: ${OBJ_B}
 			@echo "\033[31m bonus Linked $@\033[0m"
-			@cc ${CFLAGS} ${OBJ_B} -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
+			@cc ${CFLAGS} ${OBJ_B} -lmlx -framework OpenGL -framework AppKit -o $@
 
 %_bonus.o : %_bonus.c $(bonus_folder)so_long_bonus.h
 			@echo "Compiling bonus $<"
@@ -77,8 +79,11 @@ ${B_NAME}: ${OBJ_B}
 
 $(NAME): $(OBJ)
 		@echo "\033[32m mandatory Linked $@\033[0m"
-		@cc $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
+		@cc $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $@
 
+norm :
+	@norminette
+	
 clean :
 	@rm -rf ${OBJ} ${OBJ_B}
 

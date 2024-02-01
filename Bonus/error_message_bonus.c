@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_message.c                                    :+:      :+:    :+:   */
+/*   error_message_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:20:26 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 21:53:38 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 14:05:08 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	error_message_helper(t_solong *var, int mode)
 {
 	if (mode == 20)
-	{
 		write(2, "Malloc is not Working\n", 22);
-	}
+	if (mode == 7)
+		write(2, "Textures cannot be loadable\n", 28);
 	if (mode == 100)
 	{
 		ft_free(var->map.map);
@@ -46,7 +46,7 @@ void	error_message(t_solong *var, int mode)
 	if (mode == 3)
 		write(2, "The map has not a valid path.\n", 30);
 	if (mode == 5)
-		write(2, "File's extenstion is not valid\n", 31);
+		write(2, "File's extention is not valid\n", 31);
 	if (mode == 6)
 		write(2, "Try giving me the name of files's Map.\n", 39);
 	error_message_helper(var, mode);

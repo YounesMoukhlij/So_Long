@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*   ft_parse_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:35:47 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 21:53:48 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 16:43:32 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,19 @@ void	ft_parse(int ac, char *file, t_solong *var)
 	var->map.map = read_map_from_file(file);
 	if (!var->map.map)
 		error_message(var, 20);
-	if (check_space_for_enemy(var))
-		error_message(var, 100);
 	fill_out_variables(var);
+	if (check_valid_members(var))
+		error_message(var, 4);
 	if (is_valid_rectangle(var))
 		error_message(var, 0);
+	if (check_space_for_enemy(var))
+		error_message(var, 100);
 	if (is_valid_walls(var))
 		error_message(var, 1);
 	if (is_valid_collectible(var))
 		error_message(var, 2);
+	if (check_valid_path_door(var))
+		error_message(var, 3);
 	if (check_valid_path(var))
 		error_message(var, 3);
-	if (check_valid_members(var))
-		error_message(var, 4);
 }

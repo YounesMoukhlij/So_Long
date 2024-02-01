@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:39:48 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:18:21 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 16:44:50 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-void	show(void)
-{
-	system("leaks so_long");
-}
 
 void	fill_out_variables(t_solong *variables)
 {
@@ -43,7 +38,6 @@ int	main(int ac, char **av)
 {
 	t_solong	variable;
 
-	atexit(show);
 	variable.mlx = mlx_init();
 	ft_parse(ac, av[1], &variable);
 	variable.mlx_window = mlx_new_window(variable.mlx,

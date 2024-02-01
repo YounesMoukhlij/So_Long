@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_function.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 20:17:19 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:21:08 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 17:39:36 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	move_to_up(t_solong *var)
 	}
 	else if (var->map.map[var->map.player.y - 1][var->map.player.x] == 'C')
 	{
+		var->map.collectible--;
 		var->map.map[var->map.player.y][var->map.player.x] = '0';
 		var->map.map[var->map.player.y - 1][var->map.player.x] = 'P';
 		ft_move(var, 3);

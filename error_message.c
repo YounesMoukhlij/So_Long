@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_message.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 19:07:31 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:20:50 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 14:09:34 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	error_message_helper(t_solong *var, int mode)
 {
 	(void) var;
+	if (mode == 7)
+		write(2, "Textures cannot be loadable\n", 28);
 	if (mode == 20)
 	{
 		write(2, "Malloc is not Working\n", 22);

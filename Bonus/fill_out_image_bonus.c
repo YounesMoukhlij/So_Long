@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_out_image.c                                   :+:      :+:    :+:   */
+/*   fill_out_image_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 12:13:32 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 21:53:43 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 14:05:17 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	full_fill_xpm_to_image(t_solong *var)
 	if (!var->wall || !var->floor || !var->ennemy_1
 		|| !var->ennemy_2 || !var->ennemy_3 || !var->player
 		|| !var->collec || !var->exit_cld || !var->exit_opened)
-		error_message(var, 6);
+		error_message(var, 7);
 }
 
 void	fill_out_image_to_window(t_solong *var, int i, int j)

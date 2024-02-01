@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:14:46 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:20:58 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 11:56:11 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_out_image.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: younesmoukhlij <younesmoukhlij@student.    +#+  +:+       +#+        */
+/*   By: youmoukh <youmoukh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:14:05 by youmoukh          #+#    #+#             */
-/*   Updated: 2024/01/31 22:20:53 by younesmoukh      ###   ########.fr       */
+/*   Updated: 2024/02/01 14:06:11 by youmoukh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	full_fill_xpm_to_image(t_solong *var)
 	var->exit_opened = mlx_xpm_file_to_image(var->mlx,
 			EXIT_OPEN, &width, &length);
 	if (!var->wall || !var->collec || !var->exit_cld
-			|| !var->exit_opened || !var->player)
-		return ;
+		|| !var->exit_opened || !var->player)
+		error_message(var, 7);
 }
 
 void	fill_out_image_to_window(t_solong *var, int i, int j)
