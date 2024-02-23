@@ -9,6 +9,7 @@
 
 
 <h3 align="center">
+	<a href="#a-view-of-the-game">Gameplay</a>
 	<a href="#about">About</a>
 	<span> · </span>
 	<a href="#how-to-play">How to play</a>
