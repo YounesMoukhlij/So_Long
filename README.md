@@ -19,6 +19,7 @@
 ---
 ### A view of the game
 <img width="1901" alt="Screen Shot 2024-02-23 at 9 04 10 PM" src="https://github.com/YounesMoukhlij/So_Long/assets/123767564/283e03ab-5428-4baf-981d-625590a75b5a">
+
 ### How to play
 ---
 #### Maps
